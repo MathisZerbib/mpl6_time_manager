@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+      - PGDATABASE=api_dev
+      - PGHOST=db
+      - PGPORT=5432
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres:15.0-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/:/data
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  front:
+    container_name: front
+    build: ./front
+    volumes:
+      - ./front/public:/app/public
+      - ./front/src:/app/src
+    ports:
+      - "5173:5173"
