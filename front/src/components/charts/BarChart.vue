@@ -1,16 +1,21 @@
 <template>
-  <div class="d-flex justify-content-around m-3">
-    <Bar
-      :chart-options="chartOptions"
-      :chart-data="chartData"
-      :chart-id="chartId"
-      :dataset-id-key="datasetIdKey"
-      :plugins="plugins"
-      :css-classes="cssClasses"
-      :styles="styles"
-      :width="width"
-      :height="height"
-    />
+  <div class="d-flex justify-content-around">
+    <div class="card rounded shadow">
+      <h5 class="text-center my-3">Ma Semaine</h5>
+      <div class="card-body">
+        <Bar
+          :chart-options="chartOptions"
+          :chart-data="chartData"
+          :chart-id="chartId"
+          :dataset-id-key="datasetIdKey"
+          :plugins="plugins"
+          :css-classes="cssClasses"
+          :styles="styles"
+          :width="350"
+          :height="350"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,44 +43,20 @@ ChartJS.register(
 export default {
   name: "BarChart",
   components: { Bar },
-  props: {
-    chartId: {
-      type: String,
-      default: "bar-chart",
-    },
-    datasetIdKey: {
-      type: String,
-      default: "label",
-    },
-    width: {
-      type: Number,
-      default: 300,
-    },
-    height: {
-      type: Number,
-      default: 300,
-    },
-    cssClasses: {
-      default: "",
-      type: String,
-    },
-    styles: {
-      type: Object,
-      default: () => {},
-    },
-    plugins: {
-      type: Object,
-      default: () => {},
-    },
-  },
   data() {
     return {
       chartData: {
         labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"],
-        datasets: [{ data: [10, 20, 30, 20, 50] }],
+        datasets: [{ data: [7, 5, 7, 3, 10] }],
       },
       chartOptions: {
         responsive: true,
+        aspectRatio: 1,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
       },
     };
   },

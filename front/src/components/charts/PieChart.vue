@@ -1,18 +1,21 @@
 <template>
-  <Doughnut
-    :chart-options="chartOptions"
-    :chart-data="chartData"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
-    :timer="count"
-  />
-
-  {{ this.now }}
+  <div class="card rounded shadow">
+    <h5 class="text-center my-3">Recap & Offset</h5>
+    <div class="card-body">
+      <Doughnut
+        :chart-options="chartOptions"
+        :chart-data="chartData"
+        :chart-id="chartId"
+        :dataset-id-key="datasetIdKey"
+        :plugins="plugins"
+        :css-classes="cssClasses"
+        :styles="styles"
+        :width="350"
+        :height="350"
+        :timer="count"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

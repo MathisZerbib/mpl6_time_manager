@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <h5 class="card-title text-center my-3">Badgeage</h5>
-      <div class="card-body">
-        <Doughnut
-          :chart-options="chartOptions"
-          :chart-data="chartData"
-          :chart-id="chartId"
-          :dataset-id-key="datasetIdKey"
-          :plugins="plugins"
-          :css-classes="cssClasses"
-          :styles="styles"
-          :width="width"
-          :height="height"
-          :timer="this.now"
-        />
+  <div class="card rounded shadow">
+    <h5 class="text-center my-3">Badgeage</h5>
+    <div class="card-body">
+      <Doughnut
+        :chart-options="chartOptions"
+        :chart-data="chartData"
+        :chart-id="chartId"
+        :dataset-id-key="datasetIdKey"
+        :plugins="plugins"
+        :css-classes="cssClasses"
+        :styles="styles"
+        :width="350"
+        :height="350"
+        :timer="this.now"
+      />
+      <div class="d-flex align-items-center justify-content-around my-3">
+        <button type="button" class="btn btn-success">Entrée</button>
+        <button type="button" class="btn btn-danger">Sortie</button>
       </div>
     </div>
   </div>
@@ -51,12 +53,12 @@ export default {
         ],
       },
       chartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: 140,
+        responsive: false,
+        maintainAspectRatio: true,
+        cutout: 100,
         plugins: {
           legend: {
-            display: true,
+            display: false,
           },
         },
       },

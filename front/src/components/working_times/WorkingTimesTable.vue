@@ -24,7 +24,7 @@
           <td class="d-flex justify-content-center">
             <button
               class="btn btn-primary m-2"
-              data-bs-target="#myModal"
+              data-bs-target="#modalWorkingTime"
               data-bs-toggle="modal"
             >
               <BIconPencilSquare />
@@ -40,11 +40,11 @@
       </tbody>
     </table>
 
-    <div class="modal" id="myModal">
+    <div class="modal" id="modalWorkingTime">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Edit Working Time</h5>
             <button
               type="button"
               class="btn-close"
@@ -54,6 +54,34 @@
           </div>
           <div class="modal-body">
             <p>Modal body text goes here.</p>
+            <form
+              class="d-flex flex-row justify-content-around align-items-center"
+              v-on:submit.prevent="onSubmit"
+            >
+              <div class="form-group">
+                <label for="inputStartTime">Start Time</label>
+                <input
+                  v-model="startTime"
+                  type="time"
+                  class="w-100"
+                  id="inputStartTime"
+                  placeholder="Enter a start time"
+                />
+                <!-- <small id="startTimeHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      > -->
+              </div>
+              <div class="form-group">
+                <label for="inputEndTime">End Time</label>
+                <input
+                  v-model="endTime"
+                  type="time"
+                  class="w-100"
+                  id="inputEndTime"
+                  placeholder="Enter the End time"
+                />
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button
@@ -97,12 +125,19 @@ export default {
   // },
   methods: {
     async deleteWorkingTime(id) {
-      await axios.delete("http://localhost:4000/api/workingtime/" + id);
+      await axios.delete(
+        "http://" +
+          import.meta.env.VITE_API_ENDPOINT +
+          ":4000/api/workingtime/" +
+          id
+      );
     },
   },
 
   async mounted() {
-    const { data } = await axios.get("http://localhost:4000/api/workingtime/1");
+    const { data } = await axios.get(
+      "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/workingtime/1"
+    );
     for (let i = 0; i < data.data.length; i++) {
       data.data[i].start = data.data[i].start.substring(11, 16);
       data.data[i].end = data.data[i].end.substring(11, 16);

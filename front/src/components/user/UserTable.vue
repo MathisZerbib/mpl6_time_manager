@@ -1,7 +1,4 @@
 <template>
-  <div>
-    <FormUser />
-  </div>
   <div v-if="!users">
     <p>Loading ...</p>
   </div>
@@ -49,6 +46,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              @click="resetSelectedUser()"
             ></button>
           </div>
           <div class="modal-body">
@@ -92,7 +90,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="modifyUser(this.selectedUser.id)"
+              @click="modifyUser(this.selectedUser)"
             >
               Save changes
             </button>
@@ -104,12 +102,12 @@
 </template>
 <script>
 import axios from "axios";
-import FormUser from "../form_user/FormUser.vue";
 import { mapState } from "vuex";
 export default {
   name: "UserTable",
   data() {
     return {
+      isModalVisible: false,
     };
   },
   // computed: {
@@ -128,7 +126,9 @@ export default {
 
   methods: {
     async deleteUser(id) {
-      await axios.delete("http://localhost:4000/api/users/" + id);
+      await axios.delete(
+        "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users/" + id
+      );
     },
 
     setSelectedUser(user) {
@@ -142,6 +142,12 @@ export default {
     resetSelectedUser() {
       this.selectedUser = {};
     },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
   },
 
   async mounted() {
@@ -150,12 +156,6 @@ export default {
   computed: {
     ...mapState(["users"]),
     ...mapState(["selectedUser"]),
-  },
-  beforeUnmount() {
-    this.unsubscribe();
-  },
-  components: {
-    FormUser,
   },
 };
 </script>

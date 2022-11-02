@@ -15,10 +15,12 @@ export default new vuex.Store({
       let users = [];
       let result;
       try {
-        result = await axios.get("http://localhost:4000/api/users");
-      } catch (ex) {
+        result = await axios.get(
+          "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users"
+        );
+      } catch (error) {
         // Handle error
-        return;
+        return error;
       }
 
       // Handle success
@@ -43,12 +45,20 @@ export default new vuex.Store({
       console.log();
       try {
         await axios
-          .put("http://localhost:4000/api/users/" + selectedUser.id, {
-            user: selectedUser,
-          })
+          .put(
+            "http://" +
+              import.meta.env.VITE_API_ENDPOINT +
+              ":4000/api/users/" +
+              selectedUser.id,
+            {
+              user: selectedUser,
+            }
+          )
           .then((data) => {
-            console.log(data);
-            commit("UPDATE_USER", selectedUser);
+            if (data.data.response.status === 200) {
+              console.log("Success Update", data.data);
+              commit("UPDATE_USER", selectedUser);
+            }
           });
       } catch (error) {
         console.log("Error while update");
@@ -59,12 +69,9 @@ export default new vuex.Store({
     SET_USERS(state, users) {
       state.users = users;
     },
-    UPDATE_USER(state, selectedUser) {
-      state.selectedUser = selectedUser;
-    },
-    DELETE_USER(state, selectedUser) {
-      state.users.filter((user) => user !== selectedUser);
-    },
+    // DELETE_USER(state, selectedUser) {
+    //   state.users.filter((user) => user !== selectedUser);
+    // },
     SET_SELECTED_USER(state, selectedUser) {
       state.selectedUser = selectedUser;
     },
