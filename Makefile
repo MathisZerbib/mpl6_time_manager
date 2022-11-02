@@ -1,6 +1,6 @@
 # Command to start the project
 
-start: deps-get ecto-create ecto-migrate adminer vue elixir  
+start: elixir deps-get ecto-create ecto-migrate adminer vue 
 
 # Command to start the back
 
@@ -26,5 +26,14 @@ ecto-migrate:
 deps-get:
 	docker-compose run --rm api mix deps.get
 
-kill:
+kill: kill-api kill-adminer kill-vue
+
+
+kill-api:
 	docker-compose kill api
+
+kill-adminer:
+	docker-compose kill adminer
+	
+kill-vue:
+	docker-compose kill front
