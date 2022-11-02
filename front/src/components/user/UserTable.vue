@@ -127,7 +127,7 @@ export default {
   methods: {
     async deleteUser(id) {
       await axios.delete(
-        "http://" + "35.180.164.4" + ":4000/api/users/" + id
+        "http://" + "35.180.243.83" + ":4000/api/users/" + id
       );
     },
 

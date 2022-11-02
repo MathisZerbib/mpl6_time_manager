@@ -53,7 +53,7 @@ export default {
     createUser: async function () {
       await axios
         .post(
-          "http://" + "35.180.164.4" + ":4000/api/users",
+          "http://" + "35.180.243.83" + ":4000/api/users",
           {
             user: {
               username: this.name,
