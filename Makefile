@@ -17,6 +17,8 @@ vue:
 
 # Command to setup the project
 
+setup: deps-get ecto-create ecto-migrate
+
 ecto-create:
 	docker-compose run --rm api mix ecto.create
 
