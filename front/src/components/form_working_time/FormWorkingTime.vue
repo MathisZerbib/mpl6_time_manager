@@ -57,7 +57,7 @@ export default {
       await axios
         .post(
           "http://" +
-            import.meta.env.VITE_API_ENDPOINT +
+            "35.180.164.4" +
             ":4000/api/workingtime/1",
           {
             time: {
