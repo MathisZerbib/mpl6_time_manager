@@ -1,6 +1,6 @@
 # Command to start the project
 
-start: deps-get ecto-create ecto-migrate adminer vue elixir  
+start: elixir deps-get ecto-create ecto-migrate adminer vue  
 
 # Command to start the back
 
