@@ -2,7 +2,7 @@
   <div class="card rounded shadow">
     <h5 class="text-center my-3">Badgeage</h5>
     <div class="card-body">
-      <Doughnut
+      <Doughnut id="dougnhut"
         :chart-options="chartOptions"
         :chart-data="chartData"
         :chart-id="chartId"

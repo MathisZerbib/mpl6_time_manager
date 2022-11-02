@@ -23,15 +23,24 @@ a,
 
 }
 
-.active {
+/* .active {
   color: #42b983;
 }
 
 .exact-active-link {
   color: #42b983;
   font-weight: bold;
-}
+} */
 
+.main-layout > div, .main-layout > form {
+  margin: auto;
+}
+#dougnhut > canvas {
+  margin: auto;
+}
+.card-body {
+  margin: auto;
+}
 /* .container-clock {
   width: 420px;
 } */

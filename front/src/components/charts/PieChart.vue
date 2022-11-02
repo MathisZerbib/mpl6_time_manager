@@ -48,7 +48,7 @@ export default {
         ],
       },
       chartOptions: {
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
         cutout: 0,
         plugins: {
