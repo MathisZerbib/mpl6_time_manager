@@ -127,7 +127,7 @@ export default {
     async deleteWorkingTime(id) {
       await axios.delete(
         "http://" +
-          "35.180.164.4" +
+          "35.180.243.83" +
           ":4000/api/workingtime/" +
           id
       );
@@ -136,7 +136,7 @@ export default {
 
   async mounted() {
     const { data } = await axios.get(
-      "http://" + "35.180.164.4" + ":4000/api/workingtime/1"
+      "http://" + "35.180.243.83" + ":4000/api/workingtime/1"
     );
     for (let i = 0; i < data.data.length; i++) {
       data.data[i].start = data.data[i].start.substring(11, 16);
