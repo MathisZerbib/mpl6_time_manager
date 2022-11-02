@@ -32,7 +32,9 @@ a,
   font-weight: bold;
 } */
 
-
+.main-layout > div, .main-layout > form {
+  margin: auto;
+}
 #dougnhut > canvas {
   margin: auto;
 }
