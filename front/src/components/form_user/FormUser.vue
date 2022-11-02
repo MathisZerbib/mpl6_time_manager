@@ -61,12 +61,15 @@ export default {
             },
           }
         )
-        .then((response) => console.log("works", response))
+        .then((response) => console.log("works", response), this.loadUsers)
         .catch(function (error) {
           // error
           console.log(error);
         });
     },
+    loadUsers: async function(){
+      this.$store.dispatch("loadUsers");
+      },
     // onReset(event) {
     //   event.preventDefault();
     //   // Reset our form values
