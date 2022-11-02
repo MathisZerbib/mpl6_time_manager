@@ -127,9 +127,8 @@ export default {
   methods: {
     async deleteUser(id) {
       await axios.delete(
-        "http://" + "35.180.243.83" + ":4000/api/users/" + id
+        "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users/" + id
       );
-      this.loadUsers()
     },
 
     setSelectedUser(user) {
@@ -138,27 +137,21 @@ export default {
 
     async modifyUser(id) {
       this.$store.dispatch("updateUser", id);
-      this.loadUsers();
     },
 
     resetSelectedUser() {
       this.selectedUser = {};
-      this.loadUsers()
     },
     showModal() {
       this.isModalVisible = true;
     },
     closeModal() {
       this.isModalVisible = false;
-      this.resetSelectedUser
     },
-    loadUsers: async function(){
-      this.$store.dispatch("loadUsers");
-      },
   },
 
   async mounted() {
-    this.loadUsers()
+    this.$store.dispatch("loadUsers");
   },
   computed: {
     ...mapState(["users"]),
