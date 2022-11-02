@@ -11,16 +11,16 @@ import FormUser from "../components/form_user/FormUser.vue";
 <template>
   <main>
     <h1 class="text-center my-5">Time Manager</h1>
-    <div class="d-flex flex-direction-row justify-content-around my-5">
+    <div class="d-flex  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column">
       <ChartClock />
       <BarChart />
       <PieChart />
     </div>
-    <div class="d-flex flex-direction-row justify-content-around my-5">
+    <div class="d-flex justify-content-around my-5">
       <FormUser />
       <UserTable />
     </div>
-    <div class="d-flex flex-direction-row justify-content-around my-5">
+    <div class="d-flex justify-content-around my-5">
       <WorkingTime />
       <WorkingTimes />
     </div>
