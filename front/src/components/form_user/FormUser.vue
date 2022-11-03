@@ -7,30 +7,17 @@
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputName">Name</label>
-          <input
-            v-model="name"
-            type="text"
-            class="form-control"
-            id="exampleInputName"
-            placeholder="Enter name"
-          />
+          <input v-model="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter name" />
 
           <label for="emailInput">Email address</label>
-          <input
-            v-model="email"
-            type="email"
-            class="form-control"
-            id="emailInput"
-            placeholder="Enter email"
-          />
+          <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
           <label for="roleInput">Role</label>
           <select v-model="role">
-  <option disabled value="">Please select a role</option>
-  <option value="admin">admin</option>
-  <option>manager</option>
-  <option>employee</option>
-</select>
-<span>Role: {{ role }}</span>
+            <option disabled value="">Please select a role</option>
+            <option value="manager">manager</option>
+            <option value="employee">employee</option>
+          </select>
+          <span>Role: {{ role }}</span>
 
         </div>
       </div>
@@ -52,7 +39,7 @@ export default {
       form: {
         email: "",
         name: "",
-        role: "employee"
+        role: ""
       },
     };
   },

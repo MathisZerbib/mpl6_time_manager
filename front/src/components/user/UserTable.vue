@@ -11,8 +11,8 @@
           <th>ID</th>
           <th>Username</th>
           <th>Email</th>
-          <th>Actions</th>
           <th>Role</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
