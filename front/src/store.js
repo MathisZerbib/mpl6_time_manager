@@ -5,12 +5,29 @@ export default new vuex.Store({
   state: {
     users: [],
     selectedUser: {},
+    timerEnabled: false,
   },
   getters: {
     users: (state) => state.users,
     selectedUser: (state) => state.selectedUser,
+    timerCount: (state) => state.timerCount,
+    timerEnabled: (state) => state.timerEnabled,
   },
   actions: {
+    async startTimer({ commit }, timerCount) {
+      
+      commit("START_TIMER", timerCount)
+    },
+    async updateTimer({ commit }, timerCount) {
+      
+      commit("UPDATE_TIMER", timerCount)
+    },
+
+    async stopTimer({ commit }) {
+      
+      commit("STOP_TIMER")
+    },
+
     async loadUsers({ commit }) {
       let users = [];
       let result;
@@ -28,14 +45,6 @@ export default new vuex.Store({
       commit("SET_USERS", users);
     },
 
-    // loadUsers({ commit }) {
-    //   this.users = [];
-    //   axios.get("http://localhost:4000/api/users").then((data) => {
-    //     console.log("====== data =======", data.data);
-    //     let users = data.data.data;
-    //     commit("SET_USERS", users);
-    //   });
-    // },
     async setSelectedUser({ commit }, selectedUser) {
       console.log("selectedUser", selectedUser);
       commit("SET_SELECTED_USER", selectedUser);
@@ -68,6 +77,18 @@ export default new vuex.Store({
   mutations: {
     SET_USERS(state, users) {
       state.users = users;
+    },
+
+    START_TIMER(state, timerCount) {
+      state.timerCount = timerCount;
+      state.timerEnabled = true;
+    },
+    UPDATE_TIMER(state, timerCount) {
+      state.timerCount = timerCount;
+    },
+
+    STOP_TIMER(state) {
+      state.timerEnabled = false;
     },
     // DELETE_USER(state, selectedUser) {
     //   state.users.filter((user) => user !== selectedUser);
