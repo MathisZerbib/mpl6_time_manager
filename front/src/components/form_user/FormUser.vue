@@ -23,6 +23,15 @@
             id="emailInput"
             placeholder="Enter email"
           />
+          <label for="roleInput">Role</label>
+          <select v-model="role">
+  <option disabled value="">Please select a role</option>
+  <option value="admin">admin</option>
+  <option>manager</option>
+  <option>employee</option>
+</select>
+<span>Role: {{ role }}</span>
+
         </div>
       </div>
 
@@ -43,6 +52,7 @@ export default {
       form: {
         email: "",
         name: "",
+        role: "employee"
       },
     };
   },
@@ -58,6 +68,7 @@ export default {
             user: {
               username: this.name,
               email: this.email,
+              role: this.role
             },
           }
         )
