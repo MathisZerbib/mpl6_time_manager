@@ -11,13 +11,18 @@
 
           <label for="emailInput">Email address</label>
           <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
+          <div class="input-group my-3 rounded-right">
+  <div class="input-group-prepend form-control">
           <label for="roleInput">Role</label>
-          <select v-model="role">
+          </div>
+
+          <select v-model="role" class="custom-select">
             <option disabled value="">Please select a role</option>
             <option value="manager">manager</option>
             <option value="employee">employee</option>
           </select>
-          <span>Role: {{ role }}</span>
+</div>
+
 
         </div>
       </div>
