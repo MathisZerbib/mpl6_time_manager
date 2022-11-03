@@ -55,8 +55,6 @@ import { mapState } from "vuex";
 }
 
       },
-      async mounted() {
-  },
   computed: {
     ...mapState(["timerCount"]),
     ...mapState(["timerEnabled"]),

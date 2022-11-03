@@ -3,17 +3,8 @@
     <div class="card rounded shadow">
       <h5 class="text-center my-3">Ma Semaine</h5>
       <div class="card-body">
-        <Bar
-          :chart-options="chartOptions"
-          :chart-data="chartData"
-          :chart-id="chartId"
-          :dataset-id-key="datasetIdKey"
-          :plugins="plugins"
-          :css-classes="cssClasses"
-          :styles="styles"
-          :width="350"
-          :height="350"
-        />
+        <Bar :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :dataset-id-key="datasetIdKey"
+          :plugins="plugins" :css-classes="cssClasses" :styles="styles" :width="350" :height="350" />
       </div>
     </div>
   </div>
@@ -47,9 +38,15 @@ export default {
     return {
       chartData: {
         labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"],
-        datasets: [{ data: [7, 5, 7, 3, 10] }],
+        datasets: [{
+          data: [7, 5, 7, 3, 10],
+          backgroundColor: ['#198754a1', '#198754a1', '#198754a1', '#198754a1', '#198754a1'],
+          hoverBackgroundColor: ['#198754']
+        },],
+
       },
       chartOptions: {
+
         responsive: true,
         aspectRatio: 1,
         plugins: {
@@ -59,6 +56,15 @@ export default {
         },
       },
     };
+  },
+
+  beforeMount() {
+    let day = new Date().toLocaleString('fr-FR', { weekday: 'long' });
+    for (let i = 0; this.chartData.labels.length > i; i++) {
+      if (this.chartData.labels[i].toLocaleLowerCase() == day) {
+        this.chartData.datasets[0].backgroundColor[i] = "#198754";
+      }
+    }
   },
 };
 </script>
