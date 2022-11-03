@@ -12,6 +12,7 @@
           <th>Username</th>
           <th>Email</th>
           <th>Actions</th>
+          <th>Role</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@
           <td>{{ user.id }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
           <td class="d-flex justify-content-center">
             <button
               class="btn btn-primary m-2"
