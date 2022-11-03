@@ -10,6 +10,7 @@ export default new vuex.Store({
   getters: {
     users: (state) => state.users,
     selectedUser: (state) => state.selectedUser,
+    
     timerCount: (state) => state.timerCount,
     timerEnabled: (state) => state.timerEnabled,
   },

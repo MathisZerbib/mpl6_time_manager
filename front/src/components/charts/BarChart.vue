@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around my-3">
     <div class="card rounded shadow">
       <h5 class="text-center my-3">Ma Semaine</h5>
       <div class="card-body">
