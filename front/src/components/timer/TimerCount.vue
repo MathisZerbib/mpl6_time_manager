@@ -20,7 +20,7 @@ import { mapState } from "vuex";
           timerEnabled(value) {
               if (value) {
                   setTimeout(() => {
-                      this.time--;
+                      this.time++;
                   }, 1000);
               }
           },
@@ -32,7 +32,7 @@ import { mapState } from "vuex";
                       setTimeout(() => {
                         this.$store.dispatch("updateTimer", this.time);
 
-                          this.time--;
+                          this.time++;
                       }, 1000);
                   }
 

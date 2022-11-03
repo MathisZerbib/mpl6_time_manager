@@ -1,4 +1,6 @@
 <template>
+    <div class="d-flex justify-content-around my-3">
+
   <div class="card rounded shadow">
     <h5 class="text-center my-3">Badgeage</h5>
     <div class="card-body">
@@ -16,12 +18,14 @@
         :width="350"
         :height="350"
       />
-      <div class="d-flex align-items-center justify-content-around my-3">
+     
+    </div>
+    <div class="d-flex align-items-center justify-content-around my-3">
         <button type="button" class="btn btn-success" @click="this.runTimer()">Entrée</button>
         <button type="button" class="btn btn-danger"  @click="this.stopTimer()">Sortie</button>
       </div>
-    </div>
   </div>
+    </div>
 </template>
 
 <script>
@@ -60,7 +64,7 @@ export default {
       },
       chartOptions: {
         responsive: false,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         cutout: 100,
         plugins: {
           legend: {
