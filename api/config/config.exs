@@ -15,7 +15,7 @@ config :api, ApiWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: ApiWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Api.PubSub,
-  live_view: [signing_salt: "r/y7UIFd"]
+  live_view: [signing_salt: "AEOnBvST"]
 
 # Configures the mailer
 #
@@ -50,3 +50,7 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+config :api, Api.Guardian,
+  issuer: "api",
+  secret_key: "6JtuTiZhbRc/HwqsGaWrIzDTQFaoo4RdTQnyBxUMl3rHicUIq8L3kGUNekPsM8Bp"

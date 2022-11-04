@@ -6,7 +6,7 @@ import { BIconPencilSquare, BIconTrash } from "bootstrap-icons-vue";
 
 import store from "./store";
 
-import "./assets/main.css";
+// import "./assets/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 

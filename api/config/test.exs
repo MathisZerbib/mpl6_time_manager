@@ -17,7 +17,7 @@ config :api, Api.Repo,
 # you can enable the server option below.
 config :api, ApiWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "CVCenmQDfmWdFylelAVyrpN2C9Nh0CoVFdyTkM5EYTWwntKEOuDm6MeJtar6vW/M",
+  secret_key_base: "8tpmtqehmsNREAEMX7UUOwMo8u0gfoOvIEwl9mfV7YYUuKamrBDSeXcWCDJISUmq",
   server: false
 
 # In test we don't send emails.
