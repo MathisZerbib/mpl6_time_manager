@@ -5,11 +5,9 @@ defmodule Api.Repo.Migrations.CreateClocks do
     create table(:clocks) do
       add :time, :naive_datetime, null: false
       add :status, :boolean, default: false, null: false
-      add :user, references(:users, on_delete: :nothing, type: :id), null: false
+      add :user, references(:users), null: false
 
       timestamps()
     end
-
-    create index(:clocks, [:user])
   end
 end

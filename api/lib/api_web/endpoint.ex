@@ -7,12 +7,10 @@ defmodule ApiWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_api_key",
-    signing_salt: "WfaU51GJ"
+    signing_salt: "TySCSvfa"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
-
-  plug CORSPlug, origin: ["*"]
 
   # Serve at "/" the static files from "priv/static" directory.
   #

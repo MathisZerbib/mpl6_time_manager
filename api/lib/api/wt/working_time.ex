@@ -1,18 +1,18 @@
-defmodule Api.Working.Time do
+defmodule Api.WT.WorkingTime do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "workingtime" do
+  schema "workingtimes" do
     field :end, :naive_datetime
     field :start, :naive_datetime
-    field :user, :id
+    field :user, :string
 
     timestamps()
   end
 
   @doc false
-  def changeset(time, attrs) do
-    time
+  def changeset(working_time, attrs) do
+    working_time
     |> cast(attrs, [:start, :end, :user])
     |> validate_required([:start, :end, :user])
   end

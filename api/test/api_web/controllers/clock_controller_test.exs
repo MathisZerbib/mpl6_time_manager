@@ -7,13 +7,15 @@ defmodule ApiWeb.ClockControllerTest do
 
   @create_attrs %{
     status: true,
-    time: ~N[2022-10-25 10:04:00]
+    time: ~N[2022-10-26 14:34:00],
+    user: "some user"
   }
   @update_attrs %{
     status: false,
-    time: ~N[2022-10-26 10:04:00]
+    time: ~N[2022-10-27 14:34:00],
+    user: "some updated user"
   }
-  @invalid_attrs %{status: nil, time: nil}
+  @invalid_attrs %{status: nil, time: nil, user: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -36,7 +38,8 @@ defmodule ApiWeb.ClockControllerTest do
       assert %{
                "id" => ^id,
                "status" => true,
-               "time" => "2022-10-25T10:04:00"
+               "time" => "2022-10-26T14:34:00",
+               "user" => "some user"
              } = json_response(conn, 200)["data"]
     end
 
@@ -58,7 +61,8 @@ defmodule ApiWeb.ClockControllerTest do
       assert %{
                "id" => ^id,
                "status" => false,
-               "time" => "2022-10-26T10:04:00"
+               "time" => "2022-10-27T14:34:00",
+               "user" => "some updated user"
              } = json_response(conn, 200)["data"]
     end
 
