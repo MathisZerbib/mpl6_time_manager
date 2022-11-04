@@ -37,6 +37,13 @@ defmodule Api.Clocks do
   """
   def get_clock!(id), do: Repo.get!(Clock, id)
 
+
+  def get_clocks_by_userId(id) do
+    Clock
+    |> where(user: ^id)
+    |> Repo.all()
+  end
+
   @doc """
   Creates a clock.
 

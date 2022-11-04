@@ -7,6 +7,7 @@ defmodule Api.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -19,7 +20,7 @@ defmodule Api.MixProject do
   def application do
     [
       mod: {Api.Application, []},
-      extra_applications: [:logger, :runtime_tools, :guardian,]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -48,10 +49,7 @@ defmodule Api.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:guardian, "~> 1.0"},
-      {:bcrypt_elixir, "~> 1.0"},
-      {:comeonin, "~> 4.0"},
-
+      {:cors_plug, "~> 3.0"},
     ]
   end
 

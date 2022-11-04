@@ -12,8 +12,7 @@ defmodule Api.ClocksFixtures do
       attrs
       |> Enum.into(%{
         status: true,
-        time: ~N[2022-10-26 14:34:00],
-        user: "some user"
+        time: ~N[2022-10-25 10:04:00]
       })
       |> Api.Clocks.create_clock()
 
