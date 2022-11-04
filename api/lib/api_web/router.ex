@@ -14,6 +14,10 @@ defmodule ApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :jwt_authenticated do
+    plug Api.Guardian.Pipeline
+  end
+
   scope "/", ApiWeb do
     pipe_through :browser
 
@@ -28,7 +32,18 @@ defmodule ApiWeb.Router do
     resources "/workingtime", TimeController, except: [:new, :edit]
     get "/workingtime/:userId/:id", TimeController, :get_time_by_userId_n_id
     post "/workingtime/:userId", TimeController, :post_time_by_userId
+    post "/sign_up", UserController, :create
+    options "/sign_up", UserController, :create
+    post "/sign_in", UserController, :sign_in
+    options "/sign_in", UserController, :sign_in
     pipe_through :api
+  end
+
+  scope "/api", ApiWeb do
+    pipe_through [:api, :jwt_authenticated]
+
+    get "/my_user", UserController, :show
+
   end
 
   # Enables LiveDashboard only for development
