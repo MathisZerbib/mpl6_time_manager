@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408811748962",
+    "project_id": "timemanagerauth",
+    "storage_bucket": "timemanagerauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408811748962:android:977c8ecb96fcd80eafdb3b",
+        "android_client_info": {
+          "package_name": "com.example.time_manager_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408811748962-e1g7p23ig8p86q7edaseg77mtrbb5pof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9XufUK0rOHozzHBAcO_ykbzCv3D6v8-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408811748962-e1g7p23ig8p86q7edaseg77mtrbb5pof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

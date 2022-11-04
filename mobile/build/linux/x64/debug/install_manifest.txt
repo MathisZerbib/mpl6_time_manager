@@ -1,0 +1,11 @@
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/time_manager_flutter
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
