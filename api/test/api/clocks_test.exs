@@ -8,7 +8,7 @@ defmodule Api.ClocksTest do
 
     import Api.ClocksFixtures
 
-    @invalid_attrs %{status: nil, time: nil, user: nil}
+    @invalid_attrs %{status: nil, time: nil}
 
     test "list_clocks/0 returns all clocks" do
       clock = clock_fixture()
@@ -21,12 +21,11 @@ defmodule Api.ClocksTest do
     end
 
     test "create_clock/1 with valid data creates a clock" do
-      valid_attrs = %{status: true, time: ~N[2022-10-26 14:34:00], user: "some user"}
+      valid_attrs = %{status: true, time: ~N[2022-10-25 10:04:00]}
 
       assert {:ok, %Clock{} = clock} = Clocks.create_clock(valid_attrs)
       assert clock.status == true
-      assert clock.time == ~N[2022-10-26 14:34:00]
-      assert clock.user == "some user"
+      assert clock.time == ~N[2022-10-25 10:04:00]
     end
 
     test "create_clock/1 with invalid data returns error changeset" do
@@ -35,12 +34,11 @@ defmodule Api.ClocksTest do
 
     test "update_clock/2 with valid data updates the clock" do
       clock = clock_fixture()
-      update_attrs = %{status: false, time: ~N[2022-10-27 14:34:00], user: "some updated user"}
+      update_attrs = %{status: false, time: ~N[2022-10-26 10:04:00]}
 
       assert {:ok, %Clock{} = clock} = Clocks.update_clock(clock, update_attrs)
       assert clock.status == false
-      assert clock.time == ~N[2022-10-27 14:34:00]
-      assert clock.user == "some updated user"
+      assert clock.time == ~N[2022-10-26 10:04:00]
     end
 
     test "update_clock/2 with invalid data returns error changeset" do
