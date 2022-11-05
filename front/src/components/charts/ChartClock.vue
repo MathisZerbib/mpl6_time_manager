@@ -4,31 +4,36 @@
   <div class="card rounded shadow">
     <h5 class="text-center my-3">Badgeage</h5>
     <div class="card-body">
-      <div class="custom-counter">
-        <TimerCount v-bind:timerCount="this.timerCount" />
+      <div class="custom-counter" v-if="data.startTime !== 0 && data.isCompleted == false || data.startTime == 0 && data.isCompleted == false " >
+        <p>
+          {{ toHHMMSS(data.totalTime - data.startTime)}}
+        </p>
       </div>
+      <div class="custom-counter-message" v-if="data.startTime == 0 && data.isCompleted == true" >
+        <p>
+          {{data.messageComplete}}
+        </p>
+      </div>
+
       <Doughnut id="dougnhut"
-        :chart-options="chartOptions"
-        :chart-data="chartData"
-        :chart-id="chartId"
-        :dataset-id-key="datasetIdKey"
-        :plugins="plugins"
-        :css-classes="cssClasses"
-        :styles="styles"
-        :width="350"
-        :height="350"
+        :chart-options="chart.chartOptions"
+        :chart-data="chart.chartData"
+        :option="chart.options"
+        :width="300"
+        :height="300"
       />
      
     </div>
     <div class="d-flex align-items-center justify-content-around my-3">
-        <button type="button" class="btn btn-success" @click="this.runTimer()">Entrée</button>
-        <button type="button" class="btn btn-danger"  @click="this.stopTimer()">Sortie</button>
+        <button type="button" class="btn btn-success" @click="runTimer()">Entrée</button>
+        <button type="button" class="btn btn-danger"  @click="stopTimer()">Sortie</button>
       </div>
   </div>
     </div>
+
 </template>
 
-<script>
+<script setup>
 import { Doughnut } from "vue-chartjs";
 import {
   Chart as ChartJS,
@@ -39,26 +44,29 @@ import {
   CategoryScale,
 } from "chart.js";
 
-import TimerCount from '../timer/TimerCount.vue'
-import { mapState } from "vuex";
+
+
+import { ref, onMounted, computed, reactive, onUnmounted} from 'vue'
+// import { useStore } from 'vuex'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
-// const TIME_LIMIT = 60;
-export default {
-  name: "DoughnutChart",
-  components: {
-    Doughnut,
-    TimerCount,
-  },
-  data() {
-    return {
-      timerCount: 890,
-      chartData: {
+
+const data = reactive ( {
+      startTime: 0,
+      totalTime: 980,
+      timerEnabled: false,
+      isCompleted: false,
+      messageComplete: "You can go home !",
+  });
+
+
+const chart = reactive({
+  chartData: {
         labels: ["Temps travaillé", "Temps restant"],
         datasets: [
           {
-            backgroundColor: ["#41B883", "#E46651"],
-            data: [20, 40],
+            backgroundColor: ["#198755", "#D33F49"],
+            data: [data.startTime, data.totalTime],
           },
         ],
       },
@@ -72,67 +80,72 @@ export default {
           },
         },
       },
-      // plugins: [
-      //   {
-      //     id: "text",
-      //     beforeDraw: function (chart) {
-      //       var width = chart.width,
-      //         height = chart.height,
-      //         ctx = chart.ctx;
+    });
+const timer = ref(undefined)
 
-      //       ctx.restore();
-      //       var fontSize = (height / 200).toFixed(2);
-      //       ctx.font = fontSize + "em sans-serif";
-      //       ctx.textBaseline = "middle";
 
-      //       var text = this.timerCount,
-      //         textX = Math.round((width - ctx.measureText(text).width) / 2),
-      //         textY = height / 2;
+function getDiff() {
+  data.startTime ++; 
 
-      //       ctx.fillText(text, textX, textY);
-      //       ctx.save();
-      //     },
-      //   },
-      // ],
-    };
-  },
-  mounted() {
+    generateData()
+    console.log(data.totalTime, data.startTime)
 
-  },
-
-  methods: {
-    runTimer(){
-      this.$store.dispatch("startTimer", this.timerCount);
-    },
-
-    stopTimer(){
-      this.$store.dispatch("stopTimer");
+    if(data.totalTime == data.startTime){
+      data.startTime = 0
+      clearInterval(timer.value);
+      data.timerEnabled = false;
+      data.isCompleted = true
     }
-    // runTimer(){
 
-    //            this.intervalid1 = setInterval(function(){
-    //                if (this.clockStatus ==  false) {
-    //                 this.now.setHours(0, 0, 0);
-    //                  this.clockStatus = true;
-    //                }else {
-    //                }
-    //                var hours = this.now.getHours();
-    //              // Minutes part from the timestamp
-    //              var minutes = "0" + this.now.getMinutes();
-    //              // Seconds part from the timestamp
-    //              var seconds = "0" + this.now.getSeconds();
-           
-    //              // Will display time in 10:30:23 format
-    //              var formattedTime =
-    //                hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
-           
-    //              this.changes = formattedTime;
-    //                console.log (this.changes);
-    //            }.bind(this), 1000);
-    //        },
-  },
-  computed: {
-    ...mapState(["timerCount"]),
-  },
-};
+
+  }
+function generateData() {
+        let newArray = [data.startTime, (data.totalTime -  data.startTime)];
+  
+        chart.chartData = {
+          labels: ["Temps travaillé", "Temps restant"],
+          datasets: [
+            {
+              backgroundColor: ["#198755", "#D33F49"],
+              data: newArray
+            }
+          ]
+        };
+        chart.chartOptions= {
+        responsive: false,
+        maintainAspectRatio: false,
+        cutout: 100,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      };
+    }
+
+function runTimer(){
+  if(data.timerEnabled == false && data.isCompleted !== true){
+    timer.value = setInterval(getDiff, 1000);
+    data.timerEnabled = true;
+  }
+}
+
+function stopTimer(){
+  clearInterval(timer.value);
+  data.timerEnabled = false;
+}
+
+function toHHMMSS(timer) {
+    var sec_num = parseInt(timer, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
+
+
 </script>
