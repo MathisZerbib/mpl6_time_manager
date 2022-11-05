@@ -1,4 +1,4 @@
-
+<!-- 
 <template>
   <EasyDataTable
     v-model:items-selected="itemsSelected"
@@ -99,4 +99,4 @@ onMounted(async () => {
         deleteItem,
     };
 });
-</script>
+</script> -->

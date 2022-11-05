@@ -24,7 +24,7 @@ import Vue3EasyDataTableUser from "../components/user/Vue3EasyDataTableUser.vue"
     </div>
     <div class="d-flex main-layout  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
       <WorkingTime />
-      <Vue3EasyDataTable />
+      <!-- <Vue3EasyDataTable /> -->
     </div>
   </main>
 </template>
