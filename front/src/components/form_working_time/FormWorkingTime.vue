@@ -61,8 +61,8 @@ export default {
             ":4000/api/workingtime/1",
           {
             "time": {
-              start: this.current_date + "T12:00:00-" + this.startTime,
-              end: this.current_date + "T12:00:00-" + this.endTime,
+              start: current_date + "T12:00:00-" + this.startTime,
+              end: current_date + "T12:00:00-" + this.endTime,
             },
           }
         )
