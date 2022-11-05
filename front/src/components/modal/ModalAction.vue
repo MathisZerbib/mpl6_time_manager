@@ -39,11 +39,11 @@ export default {
   },
   methods: {
     async updateUser(id) {
-      const { data } = await axios.post("localhost/api/users/" + id);
+      const { data } = await axios.post("35.180.243.83/api/users/" + id);
       console.log(data);
     },
     async deleteUser(id) {
-      const { data } = await axios.delete("localhost/api/users/" + id);
+      const { data } = await axios.delete("35.180.243.83/api/users/" + id);
       console.log(data);
     },
   },
