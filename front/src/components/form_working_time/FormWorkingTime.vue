@@ -60,9 +60,9 @@ export default {
             "35.180.243.83" +
             ":4000/api/workingtime/1",
           {
-            time: {
-              start: current_date + "T12:00:00-" + this.startTime,
-              end: current_date + "T12:00:00-" + this.endTime,
+            "time": {
+              start: this.current_date + "T12:00:00-" + this.startTime,
+              end: this.current_date + "T12:00:00-" + this.endTime,
             },
           }
         )
