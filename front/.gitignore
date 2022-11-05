@@ -26,3 +26,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+.DS_Store
+api/.DS_Store
+api/priv/.DS_Store
+.node_modules
