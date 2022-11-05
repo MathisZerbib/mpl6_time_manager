@@ -6,7 +6,7 @@
     <div class="card-body">
       <div class="custom-counter" v-if="data.startTime !== 0 && data.isCompleted == false || data.startTime == 0 && data.isCompleted == false " >
         <p>
-          {{ toHHMMSS(data.startTime)}}
+          {{ toHHMMSS(data.totalTime - data.startTime)}}
         </p>
       </div>
       <div class="custom-counter-message" v-if="data.startTime == 0 && data.isCompleted == true" >
@@ -53,7 +53,7 @@ ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 
 const data = reactive ( {
       startTime: 0,
-      totalTime: 5,
+      totalTime: 980,
       timerEnabled: false,
       isCompleted: false,
       messageComplete: "You can go home !",
@@ -122,10 +122,6 @@ function generateData() {
         },
       };
     }
-
-onMounted(() => {
-})
-
 
 function runTimer(){
   if(data.timerEnabled == false && data.isCompleted !== true){
