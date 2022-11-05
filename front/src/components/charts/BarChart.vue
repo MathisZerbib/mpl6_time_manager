@@ -3,8 +3,8 @@
     <div class="card rounded shadow">
       <h5 class="text-center my-3">Ma Semaine</h5>
       <div class="card-body">
-        <Bar :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :dataset-id-key="datasetIdKey"
-          :plugins="plugins" :css-classes="cssClasses" :styles="styles" :width="350" :height="350" />
+        <Bar :chart-options="chartOptions" :chart-data="chartData"
+         :width="300" :height="300" />
       </div>
     </div>
   </div>
