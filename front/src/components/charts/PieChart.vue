@@ -7,14 +7,8 @@
       <Doughnut
         :chart-options="chartOptions"
         :chart-data="chartData"
-        :chart-id="chartId"
-        :dataset-id-key="datasetIdKey"
-        :plugins="plugins"
-        :css-classes="cssClasses"
-        :styles="styles"
-        :width="350"
-        :height="350"
-        :timer="count"
+        :width="300"
+        :height="300"
       />
     </div>
   </div>
@@ -45,7 +39,7 @@ export default {
         labels: ["Temps travaillé", "Temps restant"],
         datasets: [
           {
-            backgroundColor: ["#41B883", "#E46651"],
+            backgroundColor: ["#198755", "#D33F49"],
             data: [20, 40],
           },
         ],
@@ -60,46 +54,10 @@ export default {
           },
         },
       },
-      // plugins: [
-      //   {
-      //     id: "text",
-      //     beforeDraw: function (chart) {
-      //       var width = chart.width,
-      //         height = chart.height,
-      //         ctx = chart.ctx;
-
-      //       ctx.restore();
-      //       var fontSize = (height / 200).toFixed(2);
-      //       ctx.font = fontSize + "em sans-serif";
-      //       ctx.textBaseline = "middle";
-
-      //       var text = this.now,
-      //         textX = Math.round((width - ctx.measureText(text).width) / 2),
-      //         textY = height / 2;
-
-      //       ctx.fillText(text, textX, textY);
-      //       ctx.save();
-      //     },
-      //   },
-      // ],
     };
   },
   mounted() {},
 
   methods: {},
-  // const drawText = {
-
-  //   width: this.chart.width,
-  //   height: this.chart.height,
-  //   fontSize:(height / 114).toFixed(2),
-  //   font: fontSize + "em Verdana",
-  //   textBaseline: "middle",
-
-  //   text: "82%",
-  //     textX: Math.round((width - this.chart.ctx.measureText(text).width) / 2),
-  //     textY: height / 2,
-
-  //   fillText(text, textX, textY);
-  // },
 };
 </script>
