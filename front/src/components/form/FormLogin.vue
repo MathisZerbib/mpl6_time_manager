@@ -49,7 +49,7 @@ body {
 }
 
 .intro-section {
-  background-image: url("/assets/img/gotham.jpg");
+  background-image: url("@/assets/img/gotham.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
