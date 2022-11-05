@@ -1,5 +1,5 @@
 <template>
-  <form class="d-flex align-items-center" v-on:submit.prevent="onSubmit">
+  <form class="d-flex align-items-center my-5 m-auto" v-on:submit.prevent="onSubmit">
     <div class="card rounded shadow">
       <div class="card-header text-center">
         <h3>Ajoutez un temps de travail</h3>

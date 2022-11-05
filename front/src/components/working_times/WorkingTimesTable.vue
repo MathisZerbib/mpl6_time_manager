@@ -2,11 +2,8 @@
   <div>
     <FormUser />
   </div>
-  <div v-if="!workingtimes">
+  <div v-if="!workingtimes" class="d-flex align-items-center my-5 m-auto h-100">
     <p>Loading ...</p>
-  </div>
-
-  <div v-else>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -16,6 +13,26 @@
           <th>End</th>
         </tr>
       </thead>
+      </table>
+  </div>
+
+  <div v-else class="d-flex align-items-center my-5 m-auto h-100">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->
+          <th>ID</th>
+          <th>Start</th>
+          <th>End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>loading..</td>
+          <td>loading..</td>
+          <td>loading..</td>
+          </tr>
+      </tbody>
       <tbody>
         <tr v-for="workingtime in workingtimes" v-bind:key="workingtime">
           <td>{{ workingtime.id }}</td>

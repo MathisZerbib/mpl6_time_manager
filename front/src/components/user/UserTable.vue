@@ -3,7 +3,7 @@
     <p>Loading ...</p>
   </div>
 
-  <div v-else>
+  <div v-else class="d-flex align-items-center my-5 m-auto">
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
