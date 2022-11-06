@@ -15,8 +15,6 @@ import "bootstrap";
 import vuex from "vuex";
 import axios from "axios";
 
-
-
 const app = createApp(App);
 
 app.component("BIconPencilSquare", BIconPencilSquare);
