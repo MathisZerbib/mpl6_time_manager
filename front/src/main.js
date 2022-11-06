@@ -15,8 +15,8 @@ import "bootstrap";
 import vuex from "vuex";
 import axios from "axios";
 
-import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
+import Datepicker from '@/vuepic/vue-datepicker';
+import '@/vuepic/vue-datepicker/dist/main.css'
 
 
 const app = createApp(App);
