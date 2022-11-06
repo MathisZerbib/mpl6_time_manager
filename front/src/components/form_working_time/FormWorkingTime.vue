@@ -81,6 +81,15 @@ var current_date =
 
       <div class="card-body">
         <div class="form-group">
+          <label for="inputUserId">User Id</label>
+          <input
+            v-model="userId"
+            type="number"
+            class="w-100"
+            id="inputUserId"
+            placeholder="Enter a user Id"
+            required
+          />
           <label for="inputStartTime">Start Time</label>
           <input
             v-model="startTime"
@@ -88,6 +97,7 @@ var current_date =
             class="w-100"
             id="inputStartTime"
             placeholder="Enter a start time"
+            required
           />
           <label for="inputEndTime">End Time</label>
           <input
@@ -96,6 +106,7 @@ var current_date =
             class="w-100"
             id="inputEndTime"
             placeholder="Enter the End time"
+            required
           />
         </div>
       </div>
@@ -117,6 +128,7 @@ export default {
   data() {
     return {
       form: {
+        userId: null,
         startTime: "",
         endTime: "",
       },
@@ -131,7 +143,7 @@ export default {
         .post(
           "http://" +
           "35.180.243.83"+
-            ":4000/api/workingtime/1",
+            ":4000/api/workingtime/"+this.userId,
           {
             time: {
               start: current_date + "T" + this.startTime+":00",
@@ -150,6 +162,7 @@ export default {
       // Reset our form values
       this.form.startTime = "";
       this.form.endTime = "";
+      this.form.userId = null
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
