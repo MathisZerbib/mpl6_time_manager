@@ -6,27 +6,24 @@ import PieChart from "../components/charts/PieChart.vue";
 import WorkingTime from "../components/form_working_time/FormWorkingTime.vue";
 import WorkingTimesTable from "../components/working_times/WorkingTimesTable.vue";
 import FormUser from "../components/form_user/FormUser.vue";
-import Vue3EasyDataTableWorkingTime from "../components/working_times/Vue3EasyDataTableWorkingTime.vue"
-import Vue3EasyDataTableUser from "../components/user/Vue3EasyDataTableUser.vue";
+
 </script>
 
 <template>
-  <main>
+  <main class="container">
     <h1 class="text-center my-5">Time Manager</h1>
-    <div class="d-flex main-layout  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
+    <div class="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
       <ChartClock />
       <BarChart />
       <PieChart />
     </div>
-    <div class="d-flex main-layout  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
-      <FormUser />
-      <UserTable />
-      <!-- <Vue3EasyDataTableUser /> -->
-      <WorkingTimesTable />
+    <div class="d-flex flex-lg-row flex-sm-row flex-md-row justify-content-around flex-column my-3">
+      <FormUser class="row-md-4"/>
+      <WorkingTime class="row-md-4"/>
     </div>
-    <div class="d-flex main-layout  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
-      <WorkingTime />
-      <!-- <Vue3EasyDataTableWorkingTime /> -->
+    <div class="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
+      <UserTable />
+      <WorkingTimesTable />
     </div>
   </main>
 </template>
