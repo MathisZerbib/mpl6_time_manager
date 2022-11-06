@@ -1,6 +1,6 @@
-<!-- 
+
 <template>
-  <EasyDataTable
+  <EasyDataTableWorkingTime
     v-model:items-selected="itemsSelected"
     buttons-pagination
     :headers="headers"
@@ -27,7 +27,7 @@
         />
       </div>
     </template>
-  </EasyDataTable>
+  </EasyDataTableWorkingTime>
 </template>
 
 
@@ -99,4 +99,4 @@ onMounted(async () => {
         deleteItem,
     };
 });
-</script> -->
+</script>

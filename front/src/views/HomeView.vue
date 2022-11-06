@@ -6,7 +6,7 @@ import PieChart from "../components/charts/PieChart.vue";
 import WorkingTime from "../components/form_working_time/FormWorkingTime.vue";
 import WorkingTimes from "../components/working_times/WorkingTimesTable.vue";
 import FormUser from "../components/form_user/FormUser.vue";
-import Vue3EasyDataTable from "../components/working_times/Vue3EasyDataTable.vue"
+import Vue3EasyDataTableWorkingTime from "../components/working_times/Vue3EasyDataTableWorkingTime.vue"
 import Vue3EasyDataTableUser from "../components/user/Vue3EasyDataTableUser.vue";
 </script>
 
@@ -24,7 +24,7 @@ import Vue3EasyDataTableUser from "../components/user/Vue3EasyDataTableUser.vue"
     </div>
     <div class="d-flex main-layout  flex-lg-row flex-sm-column flex-md-column justify-content-around flex-column my-3">
       <WorkingTime />
-      <!-- <Vue3EasyDataTable /> -->
+      <Vue3EasyDataTableWorkingTime />
     </div>
   </main>
 </template>
