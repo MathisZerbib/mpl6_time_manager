@@ -11,6 +11,7 @@
           <th>ID</th>
           <th>Start</th>
           <th>End</th>
+          <th>Actions</th>
         </tr>
       </thead>
       </table>
@@ -24,14 +25,10 @@
           <th>ID</th>
           <th>Start</th>
           <th>End</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>loading..</td>
-          <td>loading..</td>
-          <td>loading..</td>
-          </tr>
       </tbody>
       <tbody>
         <tr v-for="workingtime in workingtimes" v-bind:key="workingtime">
@@ -143,8 +140,7 @@ export default {
   methods: {
     async deleteWorkingTime(id) {
       await axios.delete(
-        "http://" +
-          "35.180.243.83" +
+        "http://" + import.meta.env.VITE_API_ENDPOINT +
           ":4000/api/workingtime/" +
           id
       );
@@ -153,7 +149,7 @@ export default {
 
   async mounted() {
     const { data } = await axios.get(
-      "http://" + "35.180.243.83" + ":4000/api/workingtime/1"
+      "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/workingtime/1"
     );
     for (let i = 0; i < data.data.length; i++) {
       data.data[i].start = data.data[i].start.substring(11, 16);

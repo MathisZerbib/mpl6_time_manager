@@ -20,7 +20,7 @@ export default new vuex.Store({
       let result;
       try {
         result = await axios.get(
-          "http://" + "35.180.243.83" + ":4000/api/users/1/workingTime/2"
+          "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users/1/workingTime/2"
         );
       } catch (error) {
         // Handle error
@@ -55,7 +55,7 @@ export default new vuex.Store({
       let result;
       try {
         result = await axios.get(
-          "http://" + "35.180.243.83" + ":4000/api/users"
+          "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users"
         );
       } catch (error) {
         // Handle error
@@ -78,7 +78,7 @@ export default new vuex.Store({
         await axios
           .put(
             "http://" +
-              "35.180.243.83" +
+              import.meta.env.VITE_API_ENDPOINT +
               ":4000/api/users/" +
               selectedUser.id,
             {

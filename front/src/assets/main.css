@@ -28,3 +28,11 @@
     left: 30%;
     font-weight: bold;
   }
+
+
+  /* GENERAL TABLE STYLE  */
+
+  tbody, td, tfoot, th, thead, tr {
+    text-align: center;
+    vertical-align: middle;
+  }
