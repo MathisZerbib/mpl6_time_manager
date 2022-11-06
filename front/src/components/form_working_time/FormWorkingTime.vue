@@ -24,6 +24,9 @@
 </template>
 
 <script setup>
+import Datepicker from "@vuepic/vue-datepicker"
+import '@vuepic/vue-datepicker/dist/main.css'
+
 // Lazy load the component we want to pass
 import { ref } from 'vue';
 import axios from 'axios';
