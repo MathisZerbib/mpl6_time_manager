@@ -54,7 +54,7 @@ var current_date =
       await axios
         .post(
           "http://" +
-          import.meta.env.VITE_API_ENDPOINT +
+          "35.180.243.83" +
           ":4000/api/workingtime/1",
           {
             "time": {
