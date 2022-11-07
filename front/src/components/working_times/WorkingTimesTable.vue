@@ -4,18 +4,13 @@
           <input
           v-model="this.p1"
             type="number"
-            class="w-100"
+            class="w-100 form-control"
             id="inputUserId"
             placeholder="Enter a user Id"
             required
           />
-          <button @click="this.refreshWorkingTime()"> refresh</button>
+          <button class="btn btn-primary btn btn-primary" @click="this.refreshWorkingTime()"> refresh</button>
   </div>
-
-  <!-- <div>
-    <FormUser />
-  </div> -->
-  
   <div v-if="!workingtimes" class="d-flex align-items-center my-5 m-auto h-100">
     <p>Loading ...</p>
     

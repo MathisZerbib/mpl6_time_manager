@@ -85,7 +85,7 @@ var current_date =
           <input
             v-model="userId"
             type="number"
-            class="w-100"
+            class="form-control"
             id="inputUserId"
             placeholder="Enter a user Id"
             required
@@ -94,7 +94,7 @@ var current_date =
           <input
             v-model="startTime"
             type="time"
-            class="w-100"
+            class="form-control"
             id="inputStartTime"
             placeholder="Enter a start time"
             required
@@ -103,7 +103,7 @@ var current_date =
           <input
             v-model="endTime"
             type="time"
-            class="w-100"
+            class="form-control"
             id="inputEndTime"
             placeholder="Enter the End time"
             required
