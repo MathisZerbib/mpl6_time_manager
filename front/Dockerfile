@@ -6,7 +6,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 WORKDIR /app
 
-COPY package*.json app/
+COPY package*.json /app/
 
 RUN npm install
 
@@ -19,4 +19,3 @@ RUN chmod +x start.sh
 EXPOSE 5173
 
 CMD ["./start.sh"]
-
