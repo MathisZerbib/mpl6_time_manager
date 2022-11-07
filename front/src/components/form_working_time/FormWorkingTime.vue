@@ -54,7 +54,7 @@ var current_date =
       await axios
         .post(
           "http://" +
-          "35.180.243.83" +
+          "127.0.0.1" +
           ":4000/api/workingtime/1",
           {
             "time": {
@@ -142,7 +142,7 @@ export default {
       await axios
         .post(
           "http://" +
-          "35.180.243.83"+
+          "127.0.0.1"+
             ":4000/api/workingtime/"+this.userId,
           {
             time: {
