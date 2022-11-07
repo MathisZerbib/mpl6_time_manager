@@ -1,9 +1,24 @@
 <template>
   <div>
-    <FormUser />
+    <label for="inputUserId">User Id</label>
+          <input
+          v-model="this.p1"
+            type="number"
+            class="w-100"
+            id="inputUserId"
+            placeholder="Enter a user Id"
+            required
+          />
+          <button @click="this.refreshWorkingTime()"> refresh</button>
   </div>
+
+  <!-- <div>
+    <FormUser />
+  </div> -->
+  
   <div v-if="!workingtimes" class="d-flex align-items-center my-5 m-auto h-100">
     <p>Loading ...</p>
+    
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -122,8 +137,20 @@ export default {
   data() {
     return {
       workingtimes: [],
+      userId: 10,
     };
   },
+  
+  computed: {
+  p1: {
+    get () {
+    return this.userId
+    },
+    set (val) {
+	  this.userId = val       	
+     }
+  },
+},
   // computed: {
   //   columns: function columns() {
   //     if (this.workingtimes.length == 0) {
@@ -145,17 +172,32 @@ export default {
           id
       );
     },
-  },
-
-  async mounted() {
-    const { data } = await axios.get(
-      "http://" + "35.180.243.83" + ":4000/api/workingtime/1"
+    async getWorkingTime(){
+      const { data } = await axios.get(
+      "http://" + "35.180.243.83" + ":4000/api/workingtime/"+this.p1
     );
     for (let i = 0; i < data.data.length; i++) {
       data.data[i].start = data.data[i].start.substring(11, 16);
       data.data[i].end = data.data[i].end.substring(11, 16);
       this.workingtimes.push(data.data[i]);
     }
+    },
+    async refreshWorkingTime(){
+
+      this.getWorkingTime();
+      this.workingtimes = [];
+    }
+  },  
+  
+  watch: {
+    userId: function (val) {
+      this.userId = val
+    },
+  },
+
+  async mounted() {
+    this.getWorkingTime();
+   
   },
 };
 </script>
