@@ -14,6 +14,7 @@ import "bootstrap";
 
 import vuex from "vuex";
 import axios from "axios";
+import './registerServiceWorker'
 
 const app = createApp(App);
 
