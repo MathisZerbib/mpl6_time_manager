@@ -24,7 +24,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-around my-3">
             <button type="button" class="btn btn-success" @click="runTimer()">Entrée</button>
-            <button type="button" class="btn btn-danger"  @click="stopTimer()">Sortie</button>
+            <button type="button" class="btn btn-warning"  @click="pauseTimer()">Pause</button>
           </div>
       </div>
     </div>
@@ -115,6 +115,7 @@ function runTimer(){
     data.timerEnabled = true;
   }
 }
+
 function stopTimer(){
   clearInterval(timer.value);
   data.timerEnabled = false;

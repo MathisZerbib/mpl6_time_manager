@@ -2,10 +2,10 @@
   "name": "vue-project",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
@@ -13,6 +13,8 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons-vue": "^1.8.1",
     "chart.js": "^3.9.1",
+    "http-server": "^14.1.1",
+    "register-service-worker": "^1.7.2",
     "vue": "^3.2.41",
     "vue-chartjs": "^4.1.2",
     "vue-router": "^4.1.5",
@@ -21,10 +23,13 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^3.1.2",
+    "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "eslint": "^8.22.0",
     "eslint-plugin-vue": "^9.3.0",
     "prettier": "^2.7.1",
-    "vite": "^3.1.8"
+    "vite": "^3.1.8",
+    "vite-plugin-mkcert": "^1.10.1",
+    "vite-plugin-pwa": "^0.13.2"
   }
 }
