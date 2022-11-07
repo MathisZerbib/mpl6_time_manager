@@ -23,7 +23,10 @@ export default new vuex.Store({
   mutations: {
     SET_USERS(state, user) {
       state.user = user;
-      state.token = user.token
+      state.token = user.token;
+      localStorage.user= user;
+      localStorage.token = token;
+      
     },
   },
 });

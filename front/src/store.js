@@ -10,45 +10,8 @@ export default new vuex.Store({
   getters: {
     users: (state) => state.users,
     selectedUser: (state) => state.selectedUser,
-    
-    currentTime: (state) => state.currentTime,
-    totalTime: (state)=> state.totalTime,
-    timerEnabled: (state) => state.timerEnabled,
   },
   actions: {
-    async setTotalTime({ commit }, totalTime) {
-      let result;
-      try {
-        result = await axios.get(
-          "http://" + "35.180.243.83" + ":4000/api/users/1/workingTime/2"
-        );
-      } catch (error) {
-        // Handle error
-        return error;
-      }       
-      if(result){
-        console.log(result)
-      }
-      console.log('Server wrong API call')
-      commit("SET_TOTAL_TIME", totalTime)
-    },
-
-    async startTimer({ commit }, currentTime) {
-      
-      commit("START_TIMER", currentTime)
-    },
-    async updateTimer({ commit }, currentTime) {
-      
-      commit("UPDATE_TIMER", currentTime)
-    },
-
-    async stopTimer({ commit }) {
-      
-      commit("STOP_TIMER")
-    },
-
-
-
 
     async loadUsers({ commit }) {
       let users = [];
