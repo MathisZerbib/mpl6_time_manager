@@ -10,52 +10,15 @@ export default new vuex.Store({
   getters: {
     users: (state) => state.users,
     selectedUser: (state) => state.selectedUser,
-    
-    currentTime: (state) => state.currentTime,
-    totalTime: (state)=> state.totalTime,
-    timerEnabled: (state) => state.timerEnabled,
   },
   actions: {
-    async setTotalTime({ commit }, totalTime) {
-      let result;
-      try {
-        result = await axios.get(
-          "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users/1/workingTime/2"
-        );
-      } catch (error) {
-        // Handle error
-        return error;
-      }       
-      if(result){
-        console.log(result)
-      }
-      console.log('Server wrong API call')
-      commit("SET_TOTAL_TIME", totalTime)
-    },
-
-    async startTimer({ commit }, currentTime) {
-      
-      commit("START_TIMER", currentTime)
-    },
-    async updateTimer({ commit }, currentTime) {
-      
-      commit("UPDATE_TIMER", currentTime)
-    },
-
-    async stopTimer({ commit }) {
-      
-      commit("STOP_TIMER")
-    },
-
-
-
 
     async loadUsers({ commit }) {
       let users = [];
       let result;
       try {
         result = await axios.get(
-          "http://" + import.meta.env.VITE_API_ENDPOINT + ":4000/api/users"
+          "http://" + "35.180.243.83" + ":4000/api/users"
         );
       } catch (error) {
         // Handle error
@@ -78,7 +41,7 @@ export default new vuex.Store({
         await axios
           .put(
             "http://" +
-              import.meta.env.VITE_API_ENDPOINT +
+              "35.180.243.83" +
               ":4000/api/users/" +
               selectedUser.id,
             {
@@ -102,6 +65,8 @@ export default new vuex.Store({
     },
     SET_SELECTED_USER(state, selectedUser) {
       state.selectedUser = selectedUser;
+      sessionStorage.user= JSON.stringify(selectedUser);
+
     },
 
   },
