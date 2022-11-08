@@ -20,7 +20,7 @@
               <input name="login" id="login" class="btn-primary login-btn" type="button" value="Connexion">
             </div>
           </form>           
-          <p class="login-wrapper-footer-text">Vous n'avez pas de compte ? &nbsp;<a href="./register" class="text-reset">Enregistrez-vous ici</a></p>
+          <p class="login-wrapper-footer-text">Vous n'avez pas de compte ? &nbsp;<a href="/register" class="text-reset">Enregistrez-vous ici</a></p>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@ body {
 }
 
 .intro-section {
-  background-image: url("./src/img/gotham.jpg");
+  background-image: url("@/assets/img/gotham.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -4,7 +4,6 @@ defmodule Api.Accounts.User do
 
   schema "users" do
     field :email, :string
-    field :password_hash, :string
     field :username, :string
     field :role, :string
 

@@ -23,7 +23,7 @@
                 <input name="register" id="register" class="btn-primary login-btn" type="button" value="S'enregistrer">
               </div>
             </form>           
-            <p class="login-wrapper-footer-text">Vous avez déjà un compte ? &nbsp;<a href="#!" class="text-reset">Connectez-vous ici</a></p>
+            <p class="login-wrapper-footer-text">Vous avez déjà un compte ? &nbsp;<a href="/" class="text-reset">Connectez-vous ici</a></p>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
   }
   
   .intro-section {
-    background-image: url("./src/img/gotham.jpg");
+    background-image: url("@/assets/img/gotham.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
