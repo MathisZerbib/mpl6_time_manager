@@ -1,9 +1,9 @@
 <template>
       <div class="d-flex justify-content-around my-3">
 
-  <div class="card rounded shadow">
+  <div class="card">
     <h5 class="text-center my-3">Recap & Offset</h5>
-    <div class="card-body">
+    <div>
       <Doughnut
         :chart-options="chartOptions"
         :chart-data="chartData"

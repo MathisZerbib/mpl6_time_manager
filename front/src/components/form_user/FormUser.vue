@@ -1,6 +1,6 @@
 <template>
-  <form class="" v-on:submit.prevent="onSubmit">
-    <div class="card rounded shadow">
+  <form v-on:submit.prevent="onSubmit">
+    <div class="card rounded shadow my-3">
       <div class="card-header text-center">
         <h3>Ajoutez un utilisateur</h3>
       </div>
@@ -12,18 +12,16 @@
           <label class="m-2" for="emailInput">Email address</label>
           <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
           <div class="input-group my-3 rounded-right">
-  <div class="input-group-prepend form-control">
-          <label class="m-2" for="roleInput">Role</label>
+            <div class="input-group-prepend form-control">
+              <label class="m-2" for="roleInput">Role</label>
+            </div>
+
+            <select v-model="role" class="custom-select">
+              <option disabled value="">Please select a role</option>
+              <option value="manager">manager</option>
+              <option value="employee">employee</option>
+            </select>
           </div>
-
-          <select v-model="role" class="custom-select">
-            <option disabled value="">Please select a role</option>
-            <option value="manager">manager</option>
-            <option value="employee">employee</option>
-          </select>
-</div>
-
-
         </div>
       </div>
 
