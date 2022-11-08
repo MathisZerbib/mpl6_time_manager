@@ -18,7 +18,7 @@ export default new vuex.Store({
       let result;
       try {
         result = await axios.get(
-          "http://" + "35.180.243.83" + ":4000/api/users"
+          "http://" + "127.0.0.1" + ":4000/api/users"
         );
       } catch (error) {
         // Handle error
@@ -41,7 +41,7 @@ export default new vuex.Store({
         await axios
           .put(
             "http://" +
-              "35.180.243.83" +
+              "127.0.0.1" +
               ":4000/api/users/" +
               selectedUser.id,
             {
