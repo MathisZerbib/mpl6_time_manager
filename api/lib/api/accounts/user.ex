@@ -12,13 +12,13 @@ defmodule Api.Accounts.User do
   end
 
   @doc false
-  def changeset(user, attrs) do
-    user
-    |> cast(attrs, [:username, :email, :role, :password_hash])
-    |> validate_required([:username, :email, :role, :password_hash])
-    |> validate_format(:email, ~r/^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$/)
-    |> unique_constraint(:email)
-  end
+  # def changeset(user, attrs) do
+  #   user
+  #   |> cast(attrs, [:username, :email, :role, :password_hash])
+  #   |> validate_required([:username, :email, :role, :password_hash])
+  #   |> validate_format(:email, ~r/^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$/)
+  #   |> unique_constraint(:email)
+  # end
 
   def registration_changeset(user, attrs) do
     user

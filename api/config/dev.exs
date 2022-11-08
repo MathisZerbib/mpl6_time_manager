@@ -1,12 +1,21 @@
 import Config
 
 # Configure your database
+# config :api, Api.Repo,
+# username: System.get_env("PGUSER"),
+# password: System.get_env("PGPASSWORD"),
+# hostname: System.get_env("PGHOST"),
+# database: System.get_env("PGDATABASE"),
+# port: System.get_env("PGORT"),
+#   stacktrace: true,
+#   show_sensitive_data_on_connection_error: true,
+#   pool_size: 10
+
 config :api, Api.Repo,
-username: System.get_env("PGUSER"),
-password: System.get_env("PGPASSWORD"),
-hostname: System.get_env("PGHOST"),
-database: System.get_env("PGDATABASE"),
-port: System.get_env("PGORT"),
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "api_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
