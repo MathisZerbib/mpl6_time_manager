@@ -100,9 +100,6 @@ var current_date =
 import { ref } from 'vue';
 import axios from 'axios';
 
-import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
-
 
 var date = new Date();
 var current_date =
