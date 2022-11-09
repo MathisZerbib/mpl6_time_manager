@@ -2,13 +2,12 @@
   <div v-if="!users">
     <p>Loading ...</p>
   </div>
-
-  <div v-else class="d-flex align-items-center my-5 m-auto">
-    <div class="card rounded">
-      <div class="card-header text-center">
-        <h3>Utilisateurs</h3>
-      </div>
-      <table class="table table-bordered table-striped">
+  <div class="card my-3 card-2">
+    <div class="card-header text-center">
+      <h3>Utilisateurs</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table ">
         <thead>
           <tr>
             <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->
@@ -37,7 +36,7 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -74,7 +73,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
