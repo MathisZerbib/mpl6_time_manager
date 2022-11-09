@@ -37,38 +37,38 @@
         </tbody>
       </table>
     </div>
-
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">hello modal</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-              @click="resetSelectedUser()"></button>
-          </div>
-          <div class="modal-body">
-            <p>Modify this user.</p>
-            <form style="height: 100px" class="d-flex flex-row justify-content-around align-items-center"
-              v-on:submit.prevent="onSubmit">
-              <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name"
-                  v-model="this.selectedUser.username" />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-                  v-model="this.selectedUser.email" />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
-              Save changes
-            </button>
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">hello modal</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                @click="resetSelectedUser()"></button>
+            </div>
+            <div class="modal-body">
+              <p>Modify this user.</p>
+              <form style="height: 100px" class="d-flex flex-row justify-content-around align-items-center"
+                v-on:submit.prevent="onSubmit">
+                <div class="form-group">
+                  <label for="exampleInputName">Name</label>
+                  <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name"
+                    v-model="this.selectedUser.username" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+                    v-model="this.selectedUser.email" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()" ref="myBtn">
+                Close
+              </button>
+              <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
+                Save changes
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -85,14 +85,6 @@ export default {
       isModalVisible: false,
     };
   },
-  // computed: {
-  //   columns: function columns() {
-  //     if (this.users.length == 0) {
-  //       return [];
-  //     }
-  //     return Object.keys(this.users[0]);
-  //   },
-  // },
 
   // async updateUser(id) {
   //   const { data } = await axios.post("https://api/users/" + id);
@@ -104,6 +96,7 @@ export default {
       await axios.delete(
         "http://" + "127.0.0.1" + ":4000/api/users/" + id
       );
+      this.$store.dispatch("loadUsers");
     },
 
     setSelectedUser(user) {
@@ -111,7 +104,10 @@ export default {
     },
 
     async modifyUser(id) {
-      this.$store.dispatch("updateUser", id);
+      await this.$store.dispatch("updateUser", id)
+      const elem = this.$refs.myBtn
+            elem.click()
+    
     },
 
     resetSelectedUser() {
