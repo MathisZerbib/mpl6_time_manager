@@ -9,6 +9,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
+            @click="$emit('close')"
           ></button>
         </div>
         <div class="modal-body">
@@ -34,6 +35,7 @@ export default {
   name: "UserTable",
   data() {
     return {
+      isModalVisible: false,
       users: [],
     };
   },
@@ -46,6 +48,12 @@ export default {
       const { data } = await axios.delete("http://"+ "127.0.0.1"+"/api/users/" + id);
       console.log(data);
     },
+    showModal() {
+       this.isModalVisible = true;
+     },
+     closeModal() {
+       this.isModalVisible = false;
+     }
   },
 };
 </script>

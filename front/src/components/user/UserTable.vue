@@ -63,7 +63,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()" ref="myBtn">
                 Close
               </button>
               <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
@@ -87,14 +87,6 @@ export default {
       isModalVisible: false,
     };
   },
-  // computed: {
-  //   columns: function columns() {
-  //     if (this.users.length == 0) {
-  //       return [];
-  //     }
-  //     return Object.keys(this.users[0]);
-  //   },
-  // },
 
   // async updateUser(id) {
   //   const { data } = await axios.post("https://api/users/" + id);
@@ -106,6 +98,7 @@ export default {
       await axios.delete(
         "http://" + "127.0.0.1" + ":4000/api/users/" + id
       );
+      this.$store.dispatch("loadUsers");
     },
 
     setSelectedUser(user) {
@@ -113,7 +106,10 @@ export default {
     },
 
     async modifyUser(id) {
-      this.$store.dispatch("updateUser", id);
+      await this.$store.dispatch("updateUser", id)
+      const elem = this.$refs.myBtn
+            elem.click()
+    
     },
 
     resetSelectedUser() {
