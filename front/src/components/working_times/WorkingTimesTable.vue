@@ -22,11 +22,12 @@
       <h3>Heures de travail</h3>
     </div>
     <div class="d-flex my-3">
-      <input v-model="this.p1" type="number" class="w-100 form-control-1 shadow mx-2" id="inputUserId"
+      <input v-model="this.p1" type="number" class="w-100 rounded form-control-1 shadow mx-2" id="inputUserId"
         placeholder="Enter a user Id" required />
       <button class="btn btn-primary btn btn-primary" @click="this.refreshWorkingTime()"> refresh</button>
     </div>
     <table class="table">
+      
       <thead>
         <tr>
           <th>ID</th>
@@ -153,4 +154,9 @@ export default {
 .shadow {
   box-shadow: 0 .5rem 1rem rgba(117, 117, 117, 0.15) !important;
 }
+
+.horizontal-scrollable > .row {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 </style>
