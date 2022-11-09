@@ -1,7 +1,9 @@
 <script setup>
+import UserTable from "../components/user/UserTable.vue";
 import BarChart from "../components/charts/BarChart.vue";
 import ChartClock from "../components/charts/ChartClock.vue";
 import PieChart from "../components/charts/PieChart.vue";
+import WorkingTimesTable from "../components/working_times/WorkingTimesTable.vue";
 
 </script>
 
@@ -12,6 +14,10 @@ import PieChart from "../components/charts/PieChart.vue";
             <ChartClock />
             <BarChart />
             <PieChart />
+        </div>
+        <div class="card d-flex flex-sm-column flex-md-column justify-content-around flex-column my-3">
+            <WorkingTimesTable />
+            <UserTable />
         </div>
     </main>
 </template>

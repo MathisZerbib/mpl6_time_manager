@@ -2,11 +2,12 @@
   <div v-if="!users">
     <p>Loading ...</p>
   </div>
-    <div class="card my-3 card-2">
-      <div class="card-header text-center">
-        <h3>Utilisateurs</h3>
-      </div>
-      <table class="table">
+  <div class="card my-3 card-2">
+    <div class="card-header text-center">
+      <h3>Utilisateurs</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table ">
         <thead>
           <tr>
             <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->
@@ -35,43 +36,44 @@
           </tr>
         </tbody>
       </table>
+    </div>
 
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">hello modal</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                @click="resetSelectedUser()"></button>
-            </div>
-            <div class="modal-body">
-              <p>Modify this user.</p>
-              <form style="height: 100px" class="d-flex flex-row justify-content-around align-items-center"
-                v-on:submit.prevent="onSubmit">
-                <div class="form-group">
-                  <label for="exampleInputName">Name</label>
-                  <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name"
-                    v-model="this.selectedUser.username" />
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-                    v-model="this.selectedUser.email" />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
-                Save changes
-              </button>
-            </div>
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">hello modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+              @click="resetSelectedUser()"></button>
+          </div>
+          <div class="modal-body">
+            <p>Modify this user.</p>
+            <form style="height: 100px" class="d-flex flex-row justify-content-around align-items-center"
+              v-on:submit.prevent="onSubmit">
+              <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name"
+                  v-model="this.selectedUser.username" />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+                  v-model="this.selectedUser.email" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
 <script>
 import axios from "axios";

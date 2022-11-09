@@ -22,37 +22,40 @@
       <h3>Heures de travail</h3>
     </div>
     <div class="d-flex my-3">
-      <input v-model="this.p1" type="number" class="w-100 form-control-1 shadow mx-2" id="inputUserId"
+      <input v-model="this.p1" type="number" class="w-100 rounded form-control-1 shadow mx-2" id="inputUserId"
         placeholder="Enter a user Id" required />
       <button class="btn btn-primary btn btn-primary" @click="this.refreshWorkingTime()"> refresh</button>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Start</th>
-          <th>End</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-      <tbody>
-        <tr v-for="workingtime in workingtimes" v-bind:key="workingtime">
-          <td>{{ workingtime.id }}</td>
-          <td>{{ workingtime.start }}</td>
-          <td>{{ workingtime.end }}</td>
-          <td class="d-flex justify-content-center">
-            <button class="btn btn-primary m-2" data-bs-target="#modalWorkingTime" data-bs-toggle="modal">
-              <BIconPencilSquare />
-            </button>
-            <button class="btn btn-danger m-2" @click="deleteWorkingTime(workingtime.id)">
-              <BIconTrash />
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tbody>
+          <tr v-for="workingtime in workingtimes" v-bind:key="workingtime">
+            <td>{{ workingtime.id }}</td>
+            <td>{{ workingtime.start }}</td>
+            <td>{{ workingtime.end }}</td>
+            <td class="d-flex justify-content-center">
+              <button class="btn btn-primary m-2" data-bs-target="#modalWorkingTime" data-bs-toggle="modal">
+                <BIconPencilSquare />
+              </button>
+              <button class="btn btn-danger m-2" @click="deleteWorkingTime(workingtime.id)">
+                <BIconTrash />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="modal" id="modalWorkingTime">
       <div class="modal-dialog">
@@ -153,4 +156,5 @@ export default {
 .shadow {
   box-shadow: 0 .5rem 1rem rgba(117, 117, 117, 0.15) !important;
 }
+
 </style>
