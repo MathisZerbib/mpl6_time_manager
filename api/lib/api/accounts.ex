@@ -73,7 +73,6 @@ defmodule Api.Accounts do
   """
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.registration_changeset(attrs)
     |> User.changeset(attrs)
     |> Repo.insert()
   end
