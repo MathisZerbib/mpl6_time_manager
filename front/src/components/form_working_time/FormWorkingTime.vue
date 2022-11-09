@@ -124,8 +124,9 @@ var current_date =
       await axios
         .post(
           "http://" +
-          import.meta.env.VITE_API_ENDPOINT +
-          ":4000/api/workingtime/1",
+
+          "127.0.0.1"+
+            ":4000/api/workingtime/"+this.userId,
           {
             "time": {
               start: current_date + "T" + timeStart.value.hours+":"+timeStart.value.minutes + ":00",
