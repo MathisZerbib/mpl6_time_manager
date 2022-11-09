@@ -22,7 +22,7 @@
       <h3>Heures de travail</h3>
     </div>
     <div class="d-flex my-3">
-      <input v-model="this.p1" type="number" class="w-100 form-control shadow mx-2" id="inputUserId"
+      <input v-model="this.p1" type="number" class="w-100 form-control-1 shadow mx-2" id="inputUserId"
         placeholder="Enter a user Id" required />
       <button class="btn btn-primary btn btn-primary" @click="this.refreshWorkingTime()"> refresh</button>
     </div>
@@ -146,7 +146,7 @@ export default {
 </script>
 
 <style>
-.form-control {
+.form-control-1 {
   border: none !important;
 }
 
