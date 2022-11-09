@@ -1,6 +1,7 @@
 import Config
 
 # Configure your database
+
 config :api, Api.Repo,
 username: System.get_env("PGUSER"),
 password: System.get_env("PGPASSWORD"),
