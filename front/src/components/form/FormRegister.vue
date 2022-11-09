@@ -11,16 +11,16 @@
             <h2 class="login-title">S'enregistrer</h2>
             <form>
               <div class="form-group">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                <input v-model="name" type="text" name="username" id="username" class="form-control" placeholder="Username">
               </div>
               <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                <input  v-model="email"  type="email" name="email" id="email" class="form-control" placeholder="Email">
               </div>
               <div class="form-group mb-3">
-                <input type="password" name="password" id="password" class="form-control mb-5" placeholder="Password">
+                <input v-model="password_hash" type="password" name="password_hash" id="password_hash" class="form-control mb-5" placeholder="Password">
               </div>
               <div class="d-flex justify-content-center  align-items-center mb-5">
-                <input name="register" id="register" class="btn-primary login-btn" type="button" value="S'enregistrer">
+                <input @click="registerUser" name="register" id="register" class="btn-primary login-btn" type="button" value="S'enregistrer">
               </div>
             </form>           
             <p class="login-wrapper-footer-text">Vous avez déjà un compte ? &nbsp;<a href="/" class="text-reset">Connectez-vous ici</a></p>
@@ -30,16 +30,54 @@
     </div>
   </template>
   
-  
   <script>
+  import axios from "axios";
   
   export default {
     name: "FormRegister",
     data() {
       return {
-        
-  
+        form: {
+          email: "",
+          name: "",
+          password_hash: "",
+        },
       };
+    },
+    methods: {
+      onSubmit() {
+        this.registerUser();
+      },
+      registerUser: async function () {
+        await axios
+          .post(
+            "http://" + "127.0.0.1" + ":4000/api/users",
+            {
+              user: {
+                username: this.name,
+                email: this.email,
+                password_hash: this.password_hash,
+                role: "employee",
+              },
+            }
+          )
+          .then((response) => console.log("user has been registrated", response.data, "status", response.status))
+          .catch(function (error) {
+            // error
+            console.log(error);
+          });
+      },
+      // onReset(event) {
+      //   event.preventDefault();
+      //   // Reset our form values
+      //   this.form.email = "";
+      //   this.form.name = "";
+      //   // Trick to reset/clear native browser form validation state
+      //   this.show = false;
+      //   this.$nextTick(() => {
+      //     this.show = true;
+      //   });
+      // },
     },
   };
   </script>

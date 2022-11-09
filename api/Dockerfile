@@ -10,8 +10,8 @@ RUN apt-get install inotify-tools -y
 WORKDIR /app
 
 RUN mix local.hex --force
-RUN mix archive.install hex phx_new
 RUN mix local.rebar --force
+RUN mix archive.install hex phx_new
 
 EXPOSE 4000
 
