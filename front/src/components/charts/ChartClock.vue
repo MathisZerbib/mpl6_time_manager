@@ -1,36 +1,33 @@
 <template>
     <div class="d-flex justify-content-around my-3">
+      <div class="card rounded shadow">
+        <h5 class="text-center my-3">Badgeage</h5>
+        <div class="card-body">
+          <div class="custom-counter" v-if="data.startTime !== 0 && data.isCompleted == false || data.startTime == 0 && data.isCompleted == false " >
+            <p>
+              {{ toHHMMSS(data.totalTime - data.startTime)}}
+            </p>
+          </div>
+          <div class="custom-counter-message" v-if="data.startTime == 0 && data.isCompleted == true" >
+            <p>
+              {{data.messageComplete}}
+            </p>
+          </div>
 
-  <div class="card rounded shadow">
-    <h5 class="text-center my-3">Badgeage</h5>
-    <div class="card-body">
-      <div class="custom-counter" v-if="data.startTime !== 0 && data.isCompleted == false || data.startTime == 0 && data.isCompleted == false " >
-        <p>
-          {{ toHHMMSS(data.totalTime - data.startTime)}}
-        </p>
+          <Doughnut id="dougnhut"
+            :chart-options="chart.chartOptions"
+            :chart-data="chart.chartData"
+            :option="chart.options"
+            :width="300"
+            :height="300"
+          />
+        </div>
+        <div class="d-flex align-items-center justify-content-around my-3">
+            <button type="button" class="btn btn-success" @click="runTimer()">Entrée</button>
+            <button type="button" class="btn btn-warning"  @click="pauseTimer()">Pause</button>
+          </div>
       </div>
-      <div class="custom-counter-message" v-if="data.startTime == 0 && data.isCompleted == true" >
-        <p>
-          {{data.messageComplete}}
-        </p>
-      </div>
-
-      <Doughnut id="dougnhut"
-        :chart-options="chart.chartOptions"
-        :chart-data="chart.chartData"
-        :option="chart.options"
-        :width="300"
-        :height="300"
-      />
-     
     </div>
-    <div class="d-flex align-items-center justify-content-around my-3">
-        <button type="button" class="btn btn-success" @click="runTimer()">Entrée</button>
-        <button type="button" class="btn btn-danger"  @click="stopTimer()">Sortie</button>
-      </div>
-  </div>
-    </div>
-
 </template>
 
 <script setup>
@@ -43,14 +40,10 @@ import {
   ArcElement,
   CategoryScale,
 } from "chart.js";
-
-
-
 import { ref, onMounted, computed, reactive, onUnmounted} from 'vue'
 // import { useStore } from 'vuex'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
-
 const data = reactive ( {
       startTime: 0,
       totalTime: 980,
@@ -58,8 +51,6 @@ const data = reactive ( {
       isCompleted: false,
       messageComplete: "You can go home !",
   });
-
-
 const chart = reactive({
   chartData: {
         labels: ["Temps travaillé", "Temps restant"],
@@ -82,8 +73,6 @@ const chart = reactive({
       },
     });
 const timer = ref(undefined)
-
-
 function getDiff() {
   data.startTime ++; 
 
@@ -96,8 +85,6 @@ function getDiff() {
       data.timerEnabled = false;
       data.isCompleted = true
     }
-
-
   }
 function generateData() {
         let newArray = [data.startTime, (data.totalTime -  data.startTime)];
@@ -122,7 +109,6 @@ function generateData() {
         },
       };
     }
-
 function runTimer(){
   if(data.timerEnabled == false && data.isCompleted !== true){
     timer.value = setInterval(getDiff, 1000);
@@ -134,7 +120,6 @@ function stopTimer(){
   clearInterval(timer.value);
   data.timerEnabled = false;
 }
-
 function toHHMMSS(timer) {
     var sec_num = parseInt(timer, 10); // don't forget the second param
     var hours   = Math.floor(sec_num / 3600);
@@ -146,6 +131,8 @@ function toHHMMSS(timer) {
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds;
 }
-
-
 </script>
+
+<style>
+
+</style>

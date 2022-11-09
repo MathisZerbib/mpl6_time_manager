@@ -137,14 +137,14 @@ export default {
   methods: {
     async deleteWorkingTime(id) {
       await axios.delete(
-        "http://" + "35.180.243.83" +
+        "http://" + "127.0.0.1" +
         ":4000/api/workingtime/" +
         id
       );
     },
     async getWorkingTime() {
       const { data } = await axios.get(
-        "http://" + "35.180.243.83" + ":4000/api/workingtime/" + this.p1
+        "http://" + "127.0.0.1" + ":4000/api/workingtime/" + this.p1
       );
       for (let i = 0; i < data.data.length; i++) {
         data.data[i].start = data.data[i].start.substring(11, 16);

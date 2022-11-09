@@ -8,6 +8,8 @@
         <div class="form-group">
           <label class="m-2" for="exampleInputName">Name</label>
           <input v-model="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter name" />
+          <label class="m-2" for="password_hash">Password</label>
+          <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
 
           <label class="m-2" for="emailInput">Email address</label>
           <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
@@ -18,8 +20,8 @@
 
           <select v-model="role" class="custom-select">
             <option disabled value="">Please select a role</option>
-            <option value="manager">manager</option>
-            <option value="employee">employee</option>
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
           </select>
 </div>
 
@@ -44,6 +46,7 @@ export default {
       form: {
         email: "",
         name: "",
+        password_hash: "",
         role: ""
       },
     };
@@ -55,10 +58,11 @@ export default {
     createUser: async function () {
       await axios
         .post(
-          "http://" + "35.180.243.83" + ":4000/api/users",
+          "http://" + "127.0.0.1" + ":4000/api/users",
           {
             user: {
               username: this.name,
+              password_hash: this.password_hash,
               email: this.email,
               role: this.role
             },
