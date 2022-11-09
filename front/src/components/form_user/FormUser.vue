@@ -1,25 +1,27 @@
 <template>
-  <form class="d-flex align-items-center" v-on:submit.prevent="onSubmit">
+  <form class="" v-on:submit.prevent="onSubmit">
     <div class="card rounded shadow">
       <div class="card-header text-center">
         <h3>Ajoutez un utilisateur</h3>
       </div>
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputName">Name</label>
+          <label class="m-2" for="exampleInputName">Name</label>
           <input v-model="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter name" />
+          <label class="m-2" for="password_hash">Password</label>
+          <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
 
-          <label for="emailInput">Email address</label>
+          <label class="m-2" for="emailInput">Email address</label>
           <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
           <div class="input-group my-3 rounded-right">
   <div class="input-group-prepend form-control">
-          <label for="roleInput">Role</label>
+          <label class="m-2" for="roleInput">Role</label>
           </div>
 
           <select v-model="role" class="custom-select">
             <option disabled value="">Please select a role</option>
-            <option value="manager">manager</option>
-            <option value="employee">employee</option>
+            <option value="manager">Manager</option>
+            <option value="employee">Employee</option>
           </select>
 </div>
 
@@ -27,7 +29,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary btn btn-primary mt-3">
+      <button type="submit" class="btn btn-primary btn btn-primary my-3 w-50 m-auto ">
         Submit
       </button>
     </div>
@@ -44,6 +46,7 @@ export default {
       form: {
         email: "",
         name: "",
+        password_hash: "",
         role: ""
       },
     };
@@ -55,10 +58,11 @@ export default {
     createUser: async function () {
       await axios
         .post(
-          "http://" + "35.180.243.83" + ":4000/api/users",
+          "http://" + "127.0.0.1" + ":4000/api/users",
           {
             user: {
               username: this.name,
+              password_hash: this.password_hash,
               email: this.email,
               role: this.role
             },

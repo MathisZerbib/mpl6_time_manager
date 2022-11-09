@@ -10,12 +10,17 @@ import "./assets/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 
+
+
 import vuex from "vuex";
 import axios from "axios";
+import './registerServiceWorker'
 
 const app = createApp(App);
+
 app.component("BIconPencilSquare", BIconPencilSquare);
 app.component("BIconTrash", BIconTrash);
+
 app.use(vuex, axios);
 app.use(store);
 app.use(router);

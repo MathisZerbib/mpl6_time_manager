@@ -1,4 +1,0 @@
-#Fri Nov 04 13:33:15 CET 2022
-base.0=/home/laurent/Desktop/Epitech/Module_6/flutter/time_manager_flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
