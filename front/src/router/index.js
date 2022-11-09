@@ -22,8 +22,6 @@ if(localStorage.getItem('role') == "admin")
  }
 }
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -72,8 +70,8 @@ const router = createRouter({
     //   component: () => import("../components/working_times/workingTimes.vue"),
     // },
   ],
-  linkActiveClass: "active-link",
-  linkExactActiveClass: "exact-active-link",
+  // linkActiveClass: "active-link",
+  // linkExactActiveClass: "exact-active-link",
 });
 
 export default router;

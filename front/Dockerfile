@@ -19,4 +19,3 @@ RUN chmod +x start.sh
 EXPOSE 5173
 
 CMD ["./start.sh"]
-
