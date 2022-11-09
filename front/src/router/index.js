@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 
-function guardAdmin(to, from, next)
+function guardApp(to, from, next)
 {
  var isAuthenticated= false;
 //this is just an example. You will have to find a better or 
@@ -22,8 +22,6 @@ if(localStorage.getItem('role') == "admin")
  }
 }
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,9 +38,11 @@ const router = createRouter({
     {
       path: "/dashboard",
       name: "dashboard",
-      beforeEnter : guardAdmin,
+      beforeEnter : guardApp,
       component: HomeView,
     },
+
+
     // {
     //   path: "/userboard",
     //   name: "userboard",
