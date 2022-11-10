@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit.prevent="onSubmit">
-    <div class="card rounded shadow my-3">
+    <div class="card my-3 card-2">
       <div class="card-header text-center">
         <h3>Ajoutez un utilisateur</h3>
       </div>
