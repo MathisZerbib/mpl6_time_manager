@@ -5,7 +5,7 @@ export default new vuex.Store({
   state: {
     users: [],
     selectedUser: {},
-
+    
   },
   getters: {
     users: (state) => state.users,

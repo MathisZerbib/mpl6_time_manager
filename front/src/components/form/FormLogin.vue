@@ -44,20 +44,19 @@ export default {
   methods: {
     logUser: async function () {
       await axios
-        .get(
-          "http://" + "127.0.0.1" + ":4000/api/users"
-          //,
-          // {
-          //   user: {
-          //     email: this.email,
-          //     password_hash: this.password_hash,
-          //   },
-          // }
+        .post(
+          "http://" + "127.0.0.1" + ":4000/api/sign_in",
+          {
+            email: this.email,
+            password_hash: this.password_hash,
+          }
         )
         .then((response) => {
           setTimeout(() => {
-            console.log("user has been loged", response.data, "status", response.status)
-            this.$router.push('dashboard') 
+            console.log(response);
+            console.log("user has been loged", response.data, "status", response.status);
+            localStorage.setItem(`token`, response.data.jwt);
+            this.$router.push('dashboard');
           }, 500);
         })
         .catch(function (error) {
