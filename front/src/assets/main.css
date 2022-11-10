@@ -55,3 +55,12 @@ padding: 50px;
 	background-color: transparent;
 	border:none;
 }
+
+.form-control-1 {
+	border: none !important;
+	padding:8px;
+  }
+  
+  .shadow {
+	box-shadow: 0 .5rem 1rem rgba(117, 117, 117, 0.15) !important;
+  }
