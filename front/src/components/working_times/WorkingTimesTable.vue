@@ -147,14 +147,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.form-control-1 {
-  border: none !important;
-}
-
-.shadow {
-  box-shadow: 0 .5rem 1rem rgba(117, 117, 117, 0.15) !important;
-}
-
-</style>
