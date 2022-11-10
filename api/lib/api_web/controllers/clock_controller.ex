@@ -6,12 +6,6 @@ defmodule ApiWeb.ClockController do
 
   action_fallback ApiWeb.FallbackController
 
-  # def index(conn, %{"user" => email}) do
-  #   clocks = Accounts.get_user_by_username(user)
-  #   render(conn, "index.json", clocks: clocks)
-  # end
-
-
   def index(conn, _params) do
     clocks = Clocks.list_clocks()
     render(conn, "index.json", clocks: clocks)
