@@ -9,15 +9,15 @@
       <div class="col-6 form-section">
         <div class="login-wrapper">
           <h2 class="login-title">Se Connecter</h2>
-          <form>
+          <form v-on:submit.prevent="onSubmit">
             <div class="form-group">
-              <input  v-model="email" type="email" name="email" id="email" class="form-control" placeholder="Email">
+              <input  v-model="user.email" type="email" name="email" id="email" class="form-control" placeholder="Email">
             </div>
             <div class="form-group mb-3">
-              <input v-model="password_hash" type="password" name="password" id="password" class="form-control mb-5" placeholder="Password">
+              <input v-model="user.password_hash" type="password" name="password" id="password" class="form-control mb-5" placeholder="Password">
             </div>
             <div class="d-flex justify-content-center  align-items-center mb-5">
-              <input @click="logUser" name="login" id="login" class="btn-primary login-btn rounded shadow" type="button" value="Connexion">
+              <input name="login" id="login" class="btn-primary login-btn rounded shadow" type="submit" value="Connexion">
             </div>
           </form>           
           <p class="login-wrapper-footer-text">Vous n'avez pas de compte ? &nbsp;<a href="/register" class="text-reset">Enregistrez-vous ici</a></p>
@@ -30,39 +30,20 @@
 
 <script>
 import axios from "axios";
+import api from "../../services/api";
 export default {
   name: "FormLogin",
   data() {
     return {
-      form: {
+      user: {
         email: "",
         password_hash: "",
       },
     };
   },
   methods: {
-    logUser: async function () {
-      await axios
-        .get(
-          "http://" + "127.0.0.1" + ":4000/api/users"
-          //,
-          // {
-          //   user: {
-          //     email: this.email,
-          //     password_hash: this.password_hash,
-          //   },
-          // }
-        )
-        .then((response) => {
-          setTimeout(() => {
-            console.log("user has been loged", response.data, "status", response.status)
-            this.$router.push('dashboard') 
-          }, 1000);
-        })
-        .catch(function (error) {
-          // error
-          console.log(error);
-        });
+    onSubmit(){
+      api.logUser(this.user);
     },
     // onReset(event) {
     //   event.preventDefault();

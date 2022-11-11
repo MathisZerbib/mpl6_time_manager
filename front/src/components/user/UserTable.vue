@@ -85,11 +85,6 @@ export default {
     };
   },
 
-  // async updateUser(id) {
-  //   const { data } = await axios.post("https://api/users/" + id);
-  //   console.log(data);
-  // },
-
   methods: {
     async deleteUser(id) {
       await axios.delete(

@@ -5,10 +5,16 @@ export default new vuex.Store({
   state: {
     users: [],
     selectedUser: {},
+    user: {
+      id: 0,
+      token: ''
+    },
 
   },
   getters: {
     users: (state) => state.users,
+    user: (state) => state.user,
+    token: (state) => state.token,
     selectedUser: (state) => state.selectedUser,
   },
   actions: {
@@ -33,6 +39,14 @@ export default new vuex.Store({
     async setSelectedUser({ commit }, selectedUser) {
       console.log("selectedUser", selectedUser);
       commit("SET_SELECTED_USER", selectedUser);
+    },
+
+    async parseJWT({ commit }, token){
+      try {
+        return JSON.parse(atob(token.split('.')[1]));
+      } catch (e) {
+        return null;
+      }
     },
 
     async updateUser({ commit }, selectedUser) {
