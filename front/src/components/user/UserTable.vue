@@ -2,12 +2,12 @@
   <div v-if="!users">
     <p>Loading ...</p>
   </div>
-  <div class="card my-3 card-2">
+  <div class="card my-3 card-2 card-glass">
     <div class="card-header text-center">
-      <h3>Utilisateurs</h3>
+      <h3 class="text-white">Utilisateurs</h3>
     </div>
     <div class="table-responsive">
-      <table class="table ">
+      <table class="table text-white">
         <thead>
           <tr>
             <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->

@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex justify-content-around my-3">
-    <div class="card ">
-      <h5 class="text-center my-3">Ma Semaine</h5>
+    <div class="px-3">
+      <h5 class="text-center my-3 text-white">Ma Semaine</h5>
       <div>
         <Bar :chart-options="chartOptions" :chart-data="chartData"
-         :width="300" :height="300" />
+         :width="280" :height="280" />
       </div>
     </div>
   </div>
@@ -48,13 +48,38 @@ export default {
       chartOptions: {
 
         responsive: true,
-        aspectRatio: 1,
         plugins: {
           legend: {
             display: false,
           },
         },
+        scales: {
+      y: {  // not 'yAxes: [{' anymore (not an array anymore)
+        ticks: {
+          color: "white", // not 'fontColor:' anymore
+          // fontSize: 18,
+          font: {
+            size: 16, // 'size' now within object 'font {}'
+          },
+          stepSize: 1,
+          beginAtZero: true
+        }
       },
+      x: {  // not 'xAxes: [{' anymore (not an array anymore)
+        ticks: {
+          color: "white",  // not 'fontColor:' anymore
+          //fontSize: 14,
+          font: {
+            size: 16 // 'size' now within object 'font {}'
+          },
+          stepSize: 1,
+          beginAtZero: true
+        }
+      }
+    },
+
+      },
+
     };
   },
 
