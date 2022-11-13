@@ -20,7 +20,6 @@ export default new vuex.Store({
   },
   getters: {
     users: (state) => state.users,
-    user: (state) => state.user,
     token: (state) => state.token,
     selectedUser: (state) => state.selectedUser,
     loggedUser: (state) => state.loggedUser,
