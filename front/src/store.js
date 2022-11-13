@@ -9,12 +9,12 @@ export default new vuex.Store({
     users: [],
     selectedUser: {},
     loggedUser: {
-      id: "",
-      username: "",
-      email: "",
-      team: "",
-      role: "",
-      token: localStorage.getItem('token') || ""
+      id: sessionStorage.getItem('id') || "",
+      username: sessionStorage.getItem('username') || "",
+      email: sessionStorage.getItem('email') || "",
+      team: sessionStorage.getItem('team') || "",
+      role: sessionStorage.getItem('role') || "",
+      token: sessionStorage.getItem('token') || ""
     },
 
   },
@@ -70,29 +70,41 @@ export default new vuex.Store({
             if (element.id == id) {
               let loggedUser = {};
               console.log('MATCH', element)
+              sessionStorage.removeItem('id')
+              sessionStorage.removeItem('username')
+              sessionStorage.removeItem('email')
+              sessionStorage.removeItem('team')
+
+
               loggedUser.id = element.id;
               loggedUser.username = element.username;
               loggedUser.email = element.email;
               loggedUser.team = element.team;
               loggedUser.role = element.role;
               loggedUser.token = token;
+
+              sessionStorage.setItem('id', element.id)
+              sessionStorage.setItem('username',element.username )
+              sessionStorage.setItem('email', element.email)
+              sessionStorage.setItem('team', element.team)
+
               commit("SET_LOGGED_USER", loggedUser);
-              localStorage.removeItem('role')
+              sessionStorage.removeItem('role')
 
               switch (loggedUser.role) {
                 case "admin":
-                  localStorage.setItem('role', 'admin')
+                  sessionStorage.setItem('role', 'admin')
                   router.push('admin');
 
                   break;
                 case "manager":
-                  localStorage.setItem('role', 'manager')
+                  sessionStorage.setItem('role', 'manager')
                   router.push('manager-dashboard');
 
                   break;
 
                 case "employee":
-                  localStorage.setItem('role', 'employee')
+                  sessionStorage.setItem('role', 'employee')
                   router.push('dashboard');
 
                   break;

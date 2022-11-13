@@ -24,7 +24,7 @@ const router = createRouter({
       component: Admin,
       beforeEnter(to, from, next) {
         var isAuthenticated = false;
-        if (localStorage.getItem('role') === "admin")
+        if (sessionStorage.getItem('role') === "admin")
           isAuthenticated = true;
         else
           isAuthenticated = false;
@@ -42,7 +42,7 @@ const router = createRouter({
       component: Dashboard,
       beforeEnter(to, from, next) {
         var isAuthenticated = false;
-        if (localStorage.getItem('role') === "employee")
+        if (sessionStorage.getItem('role') === "employee")
           isAuthenticated = true;
         else
           isAuthenticated = false;
@@ -60,7 +60,7 @@ const router = createRouter({
       component: ManagerDashboard,
       beforeEnter(to, from, next) {
         var isAuthenticated = false;
-        if (localStorage.getItem('role') === "manager")
+        if (sessionStorage.getItem('role') === "manager")
           isAuthenticated = true;
         else
           isAuthenticated = false;
