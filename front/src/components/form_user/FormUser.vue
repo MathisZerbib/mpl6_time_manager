@@ -1,10 +1,10 @@
 <template>
   <form v-on:submit.prevent="onSubmit">
-    <div class="card my-3 card-3 card-glass my-3 mx-2">
+    <div class="card my-3 card-2 card-glass my-3 mx-2">
       <div class="card-header text-center">
         <h3 class="text-white">Ajoutez un utilisateur</h3>
       </div>
-      <div class="card-body">
+      <div>
         <div class="form-group">
           <input v-model="name" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName"
             placeholder="Enter name" />
@@ -14,13 +14,8 @@
 
           <input v-model="password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="password_hash"
             placeholder="Enter password" />
-
-
-          <label class="m-2" for="password_hash">Password</label>
-          <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
-
-          <label class="m-2" for="exampleInputName">Team</label>
-          <input v-model="team" type="text" class="form-control" id="exampleInputName" placeholder="Enter team name" />
+          <input v-model="team" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName" placeholder="Enter team name" />
+         
           <div class="input-group my-3 rounded-right">
             <div class="input-group-prepend form-control card-glass text-white">
               <label class="my-2" for="roleInput">Role</label>

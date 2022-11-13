@@ -5,7 +5,7 @@
         <h3 class="text-white">Ajoutez un temps de travail</h3>
       </div>
 
-      <div class="card-body">
+      <div>
         <div
           class=" d-flex main-layout  flex-lg-column flex-sm-column flex-md-column justify-content-around flex-column my-3 text-center">
           <div class="d-flex my-3">
