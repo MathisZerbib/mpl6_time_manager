@@ -58,6 +58,7 @@
                 email: this.email,
                 password_hash: this.password_hash,
                 role: "employee",
+                team: "alpha"
               },
             }
           )
