@@ -59,9 +59,7 @@ export default new vuex.Store({
     },
     SET_SELECTED_USER(state, selectedUser) {
       state.selectedUser = selectedUser;
-      sessionStorage.user= JSON.stringify(selectedUser);
-
-    },
+    }
 
   },
 });

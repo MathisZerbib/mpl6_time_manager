@@ -55,7 +55,7 @@ export default {
             console.log(response);
             console.log("user has been loged", response.data, "status", response.status);
             localStorage.setItem(`token`, response.data.jwt);
-            this.$router.push('dashboard');
+            this.$router.push({name: '/dashboard'});
           }, 500);
         })
         .catch(function (error) {
@@ -63,17 +63,6 @@ export default {
           console.log(error);
         });
     },
-    // onReset(event) {
-    //   event.preventDefault();
-    //   // Reset our form values
-    //   this.form.email = "";
-    //   this.form.name = "";
-    //   // Trick to reset/clear native browser form validation state
-    //   this.show = false;
-    //   this.$nextTick(() => {
-    //     this.show = true;
-    //   });
-    // },
   },
 };
 </script>

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+
 import { Bar } from "vue-chartjs";
 import {
   Chart as ChartJS,
@@ -57,6 +58,25 @@ export default {
       },
     };
   },
+  // methods: {
+  //   dataTime: async function () {
+  //     await axios
+  //       .get(
+  //         "http://" + "127.0.0.1" + ":4000/api/sign_in",
+  //         {
+  //           email: this.email,
+  //           password_hash: this.password_hash,
+  //         }
+  //       )
+  //       .then((response) => {
+          
+  //       })
+  //       .catch(function (error) {
+  //         // error
+  //         console.log(error);
+  //       });
+  //   },
+  // },
 
   beforeMount() {
     let day = new Date().toLocaleString('fr-FR', { weekday: 'long' });
