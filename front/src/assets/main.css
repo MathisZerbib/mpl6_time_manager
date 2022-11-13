@@ -107,3 +107,8 @@ body {
 .z-index-max {
 	z-index: 1;
 }
+
+
+.profile-image{
+	cursor: pointer;
+}

@@ -13,21 +13,21 @@ import PopoverVue from "../components/popover/Popover.vue";
       <h1 class="text-white text-center m-5">Time Manager</h1>
       <PopoverVue />
     </div>
-    <div class="d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
+    <div class="card-glass d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
 
       <div
-        class="card-glass card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
-        <ChartClock class="bg-transparent" />
+        class="bg-transparent card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
+        <ChartClock />
       </div>
       <div
-        class="card-glass card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
+        class="bg-transparent card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
 
-        <BarChart class="bg-transparent" />
+        <BarChart />
       </div>
       <div
-        class="card-glass card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
+        class="bg-transparent card d-flex flex-sm-column flex-md-column flex-lg-row justify-content-around flex-column my-3">
 
-        <PieChart class="bg-transparent" />
+        <PieChart />
       </div>
     </div>
     </main>
