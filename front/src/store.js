@@ -37,7 +37,6 @@ export default new vuex.Store({
 
     async updateUser({ commit }, selectedUser) {
       console.log();
-      try {
         await axios
           .put(
             "http://" +
@@ -49,14 +48,9 @@ export default new vuex.Store({
             }
           )
           .then((data) => {
-            if (data.data.response.status === 200) {
               console.log("Success Update", data.data);
-              commit("UPDATE_USER", selectedUser);
-            }
-          });
-      } catch (error) {
-        console.log("Error while update");
-      }
+        }
+      )
     },
   },
   mutations: {

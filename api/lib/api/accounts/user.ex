@@ -4,26 +4,25 @@ defmodule Api.Accounts.User do
 
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
-
   schema "users" do
     field :email, :string
     field :username, :string
     field :password_hash, :string
     field :role, :string
+    field :team, :string
 
     timestamps()
   end
 
   def changeset(user, attrs) do
       user
-      |> cast(attrs, [:username, :email, :role, :password_hash])
-      |> validate_required([:username, :email, :role, :password_hash])
+      |> cast(attrs, [:username, :email, :role, :team, :password_hash])
+      |> validate_required([:username, :email, :role, :team, :password_hash])
       |> validate_format(:email, ~r/^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$/)
       |> unique_constraint(:email)
       |> encrypt_and_put_password
 
   end
-
 
   defp encrypt_and_put_password(user) do
     with password_hash <- fetch_field!(user, :password_hash) do

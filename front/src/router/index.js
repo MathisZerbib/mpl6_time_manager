@@ -1,28 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import LoginView from '../views/LoginView.vue'
-import RegisterView from '../views/RegisterView.vue'
-
-function guardAdmin(to, from, next)
-{
- var isAuthenticated= false;
-//this is just an example. You will have to find a better or 
-// centralised way to handle you localstorage data handling 
-if(localStorage.getItem('role') == "admin")
-  isAuthenticated = true;
- else
-  isAuthenticated= false;
- if(isAuthenticated)
- {
-  next(); // allow to enter route
- } 
- else
- {
-  next('/'); // go to '/login';
- }
-}
-
-
+import Admin from "../views/Admin.vue";
+import Dashboard from "../views/Dashboard.vue";
+import ManagerDashboard from "../views/ManagerDashboard.vue";
+import LoginView from '../views/LoginView.vue';
+import RegisterView from '../views/RegisterView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,40 +19,60 @@ const router = createRouter({
       component: RegisterView,
     },
     {
+      path: "/admin",
+      name: "admin",
+      component: Admin,
+      beforeEnter(to, from, next) {
+        var isAuthenticated = false;
+        if (localStorage.getItem('role') === "admin")
+          isAuthenticated = true;
+        else
+          isAuthenticated = false;
+        if (isAuthenticated) {
+          next(); // allow to ente
+        }
+        else {
+          next('/'); // go to '/login';
+        }
+      },
+    },
+    {
       path: "/dashboard",
       name: "dashboard",
-      beforeEnter : guardAdmin,
-      component: HomeView,
+      component: Dashboard,
+      beforeEnter(to, from, next) {
+        var isAuthenticated = false;
+        if (localStorage.getItem('role') === "employee")
+          isAuthenticated = true;
+        else
+          isAuthenticated = false;
+        if (isAuthenticated) {
+          next(); // allow to ente
+        }
+        else {
+          next('/'); // go to '/login';
+        }
+      },
     },
-    // {
-    //   path: "/userboard",
-    //   name: "userboard",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import("../components/user/UserTable.vue"),
-    // },
-
-    // {
-    //   path: "/newUser",
-    //   name: "newUser",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import("../components/form_user/FormUser.vue"),
-    // },
-
-    // {
-    //   path: "/workingTime",
-    //   name: "workingTime",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (About.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import("../components/working_times/workingTimes.vue"),
-    // },
+    {
+      path: "/manager-dashboard",
+      name: "manager-dashboard",
+      component: ManagerDashboard,
+      beforeEnter(to, from, next) {
+        var isAuthenticated = false;
+        if (localStorage.getItem('role') === "manager")
+          isAuthenticated = true;
+        else
+          isAuthenticated = false;
+        if (isAuthenticated) {
+          next(); // allow to ente
+        }
+        else {
+          next('/'); // go to '/login';
+        }
+      },
+    },
   ],
-  // linkActiveClass: "active-link",
-  // linkExactActiveClass: "exact-active-link",
 });
 
 export default router;
