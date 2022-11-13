@@ -6,6 +6,7 @@ import PieChart from "../components/charts/PieChart.vue";
 import WorkingTimesTable from "../components/working_times/WorkingTimesTable.vue";
 import WorkingTime from "../components/form_working_time/FormWorkingTime.vue";
 import PopoverVue from "../components/popover/Popover.vue"
+
 </script>
 
 <template>

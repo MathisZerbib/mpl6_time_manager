@@ -46,8 +46,6 @@ body {
 	border: none;
 }
 
-
-
 .custom-counter {
 	position: absolute;
 	top: 45%;
@@ -98,6 +96,11 @@ body {
 	border: none !important;
 	padding: 8px;
 }
+
+.card-3 {
+	padding: 50px;
+}
+
 
 .form-control::placeholder {
 
