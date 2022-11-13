@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "../router";
 import store from "../store";
 
 const api = {
@@ -29,7 +30,14 @@ const api = {
         {
           user: reqBody
         }
-      )
+      ).then((res) => {
+        if(res.status == 200)
+        router.push('/')
+      })
+      .catch((error) => {
+        // error
+        console.log(error);
+      })
   },
 
   // POST NEW USER FROM ADMIN
