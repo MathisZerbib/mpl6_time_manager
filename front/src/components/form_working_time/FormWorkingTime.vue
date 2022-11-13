@@ -10,7 +10,7 @@
           class=" d-flex main-layout  flex-lg-column flex-sm-column flex-md-column justify-content-around flex-column my-3 text-center">
           <div class="d-flex my-3">
             <input v-model="user.id" type="number" class="card-glass w-100 rounded form-control-1 shadow mx-2 text-white" id="inputUserId"
-              placeholder="Enter a user Id" required />
+              placeholder="Enter a user Id" />
           </div>
           <div class="d-flex align-items-center row my-3">
             <label class="mb-2 text-white" for="inputStartTime">Arrivée</label>
