@@ -6,18 +6,18 @@
       </div>
       <div class="card-body">
         <div class="form-group">
-          <input v-model="name" type="text" class="card-glass w-100 rounded form-control-1 shadow m-2 text-white" id="exampleInputName"
+          <input v-model="name" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName"
             placeholder="Enter name" />
 
-          <input v-model="email" type="email" class="card-glass w-100 rounded form-control-1 shadow m-2 text-white" id="emailInput"
+          <input v-model="email" type="email" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="emailInput"
             placeholder="Enter email" />
 
-          <input v-model="password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow m-2 text-white" id="password_hash"
+          <input v-model="password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="password_hash"
             placeholder="Enter password" />
 
           <div class="input-group my-3 rounded-right">
             <div class="input-group-prepend form-control card-glass text-white">
-              <label class="m-2" for="roleInput">Role</label>
+              <label class="my-2" for="roleInput">Role</label>
             </div>
 
             <select v-model="role" class="custom-select card-glass text-white">

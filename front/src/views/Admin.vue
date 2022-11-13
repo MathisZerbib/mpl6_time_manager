@@ -38,7 +38,7 @@ import PopoverVue from "../components/popover/Popover.vue";
       <WorkingTimesTable />
       <UserTable />
     </div>
-    <div class="d-flex flex-sm-row flex-md-row justify-content-around flex-row my-3">
+    <div class="d-flex flex-xs-column flex-sm-column flex-md-row justify-content-around flex-column my-3">
       <WorkingTime />
       <FormUser />
     </div>

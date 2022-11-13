@@ -2,7 +2,7 @@
     <Popper class="my-auto mx-3">
         <img class="profile-image " src="https://imgs.search.brave.com/NjlS_k1s47CIdaVpSbW9I2JiYkUp4GdXWru2Gh-SC4c/rs:fit:512:512:1/g:ce/aHR0cDovL2dldGRy/YXdpbmdzLmNvbS9m/cmVlLWljb24tYncv/YW5vbnltb3VzLWF2/YXRhci1pY29uLTE5/LnBuZw">
         <template #content>
-            <div class="my-popover shadow">
+            <div class="my-popover shadow card-glass-white-bg">
                 <h5>Profile</h5>
                 <div class="justify-content-around flex-column my-3 content-popover">
                     <div>
