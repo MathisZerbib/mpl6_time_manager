@@ -1,4 +1,6 @@
-# Dockerization
+# Time Manager
+
+Projet réalisé à Epitech pendant les 3 semaines de piscine. Le but était de réaliser une application permettant aux différents utilisateurs (manger ou employé) de badger leur heures de travail.
 
 ## About
 
@@ -38,3 +40,37 @@ kill:
 to set up the project.
 
 -If the tables are modified, we use ``` Make ecto-migrate```.
+
+
+## API Reference
+
+#### Get all users
+
+```http://localhost:4000/api/users
+  GET /api/users
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Get all clocks
+
+```http://localhost:4000/api/clocks
+  GET /api/clocks
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+#### add(num1, num2)
+
+Takes two numbers and returns the sum.
+
+## Authors
+
+- [@Mathis Zerbib](https://github.com/MathisZerbib/MathisZerbib)
+- [@Thomas Caillau](https://github.com/caillau-thomas/caillau-thomas)
+- [@Maxime Delorme](https://github.com/MaximeDelorme/MaximeDelorme)
+- [@Laurent Cochonneau](https://github.com/LDB47)
