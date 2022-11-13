@@ -10,11 +10,11 @@
       <table class="table ">
         <thead>
           <tr>
-            <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Team</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -24,6 +24,7 @@
             <td>{{ user.username }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>
+            <td>{{ user.team }}</td>
             <td class="d-flex justify-content-center">
               <button class="btn btn-primary m-2" data-bs-target="#myModal" data-bs-toggle="modal"
                 @click="setSelectedUser(user)">
@@ -58,6 +59,11 @@
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
                     v-model="this.selectedUser.email" />
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputName">Team</label>
+                  <input type="text" class="form-control" id="exampleInputText" placeholder="Enter team"
+                    v-model="this.selectedUser.team" />
                 </div>
               </form>
             </div>

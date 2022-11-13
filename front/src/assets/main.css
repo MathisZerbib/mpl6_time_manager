@@ -1,10 +1,13 @@
 html {
-    overflow: scroll;
-    overflow-x: hidden;
+	overflow: scroll;
+	overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+	width: 0;
+	/* Remove scrollbar space */
+	background: transparent;
+	/* Optional: just make scrollbar invisible */
 }
 
 body {
@@ -45,21 +48,25 @@ body {
 	font-weight: bold;
 }
 
-.card-2{
-height: 40vh;
-padding: 50px;
+.card-2 {
+	height: 40vh;
+	padding: 50px;
 }
 
-.card-header{
+.card-3 {
+	padding: 50px;
+}
+
+.card-header {
 	background-color: transparent;
-	border:none;
+	border: none;
 }
 
 .form-control-1 {
 	border: none !important;
-	padding:8px;
-  }
-  
-  .shadow {
+	padding: 8px;
+}
+
+.shadow {
 	box-shadow: 0 .5rem 1rem rgba(117, 117, 117, 0.15) !important;
-  }
+}
