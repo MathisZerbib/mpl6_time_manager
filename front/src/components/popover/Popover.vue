@@ -1,6 +1,6 @@
 <template>
     <Popper class="my-auto mx-3">
-        <BIconPersonCircle style="font-size: 4.2rem;" />
+        <BIconPersonCircle style="font-size: 4.2rem; color: white;" />
         <template #content>
             <div class="my-popover shadow card-glass-white-bg">
                 <h5>Profile</h5>
