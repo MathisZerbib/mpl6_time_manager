@@ -40,8 +40,6 @@ export default new vuex.Store({
       users = result.data.data;
       commit("SET_USERS", users);
     },
-
-
     async setToken({ commit }, token) {
 
       console.log("User ID", JSON.parse(atob(token.split('.')[1])).sub)
@@ -68,18 +66,22 @@ export default new vuex.Store({
               loggedUser.role = element.role;
               loggedUser.token = token;
               commit("SET_LOGGED_USER", loggedUser);
+              localStorage.removeItem('role')
 
               switch (loggedUser.role) {
                 case "admin":
+                  localStorage.setItem('role', 'admin')
                   router.push('admin');
 
                   break;
                 case "manager":
+                  localStorage.setItem('role', 'manager')
                   router.push('manager-dashboard');
 
                   break;
 
                 case "employee":
+                  localStorage.setItem('role', 'employee')
                   router.push('dashboard');
 
                   break;
