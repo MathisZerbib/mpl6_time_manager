@@ -55,7 +55,7 @@ export default {
             console.log(response);
             console.log("user has been loged", response.data, "status", response.status);
             localStorage.setItem(`token`, response.data.jwt);
-            this.$router.push('dashboard');
+            this.$store.dispatch("setToken", response.data.jwt);
           }, 500);
         })
         .catch(function (error) {
