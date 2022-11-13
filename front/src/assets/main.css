@@ -104,7 +104,6 @@ body {
 
 
 .form-control::placeholder {
-
 	color: white;
 }
 
@@ -117,10 +116,6 @@ body {
 	z-index: 1;
 }
 
-
-.profile-image{
-	cursor: pointer;
-}
 
 .modal-backdrop {
 	opacity: 0.1!important;

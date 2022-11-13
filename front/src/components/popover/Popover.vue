@@ -1,6 +1,6 @@
 <template>
     <Popper class="my-auto mx-3">
-        <BIconPersonCircle style="font-size: 4.2rem; color: white;" />
+        <BIconPersonCircle class="profile-image" style="font-size: 4.2rem; color: white;" />
         <template #content>
             <div class="my-popover shadow card-glass-white-bg">
                 <h5>Profile</h5>
@@ -43,6 +43,7 @@ export default defineComponent({
 .profile-image{
     max-height: 70px; 
     max-width: 70px;
+    cursor: pointer;
 }
 
 .content-popover{
