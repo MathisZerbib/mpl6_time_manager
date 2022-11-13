@@ -20,7 +20,7 @@
                 <input v-model="user.password_hash" type="password" name="password_hash" id="password_hash" class="form-control mb-5" placeholder="Password">
               </div>
               <div class="d-flex justify-content-center  align-items-center mb-5">
-                <input name="register" id="register" class="btn-primary login-btn" type="submit" value="S'enregistrer">
+                <input name="register" id="register" class="btn-primary login-btn rounded shadow" type="submit" value="S'enregistrer">
               </div>
             </form>           
             <p class="login-wrapper-footer-text">Vous avez déjà un compte ? &nbsp;<a href="/" class="text-reset">Connectez-vous ici</a></p>
@@ -95,6 +95,7 @@
   
   
   .form-section {
+    background-color: white;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
