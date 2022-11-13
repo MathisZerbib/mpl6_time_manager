@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import store from "../store";
 
 const api = {
 
@@ -72,9 +72,8 @@ const api = {
         "http://" + "127.0.0.1" + ":4000/api/sign_in"
         ,
         {
-          user: {
-            user
-          },
+            email: user.email,
+            password_hash: user.password_hash
         }
       )
       .then((response) => {
@@ -82,7 +81,7 @@ const api = {
           console.log(response);
           console.log("user has been loged", response.data, "status", response.status);
           localStorage.setItem(`token`, response.data.jwt);
-          this.$store.dispatch("setToken", response.data.jwt);
+          store.dispatch("setToken", response.data.jwt);
         }, 500);
       })
       .catch(function (error) {
