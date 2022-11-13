@@ -1,5 +1,6 @@
 import vuex from "vuex";
 import axios from "axios";
+import api from "./services/api";
 import router from './router'
 
 
@@ -19,17 +20,20 @@ export default new vuex.Store({
   },
   getters: {
     users: (state) => state.users,
+    token: (state) => state.token,
     selectedUser: (state) => state.selectedUser,
     loggedUser: (state) => state.loggedUser,
   },
   actions: {
 
-    async loadUsers({ commit }) {
-      let users = [];
+    async getLoggedUserInfo({ commit }, token) {
+      let user;
       let result;
       try {
-        result = await axios.get(
-          "http://" + "127.0.0.1" + ":4000/api/users"
+        result = await axios.post(
+          "http://" + "127.0.0.1" + ":4000/api/auth/", {
+          token: token
+        }
         );
       } catch (error) {
         // Handle error
@@ -37,7 +41,14 @@ export default new vuex.Store({
       }
 
       // Handle success
-      users = result.data.data;
+      user = result.data.data;
+      commit("SET_USER_INFO", user);
+
+    },
+    async loadUsers({ commit }) {
+        let result = api.getAllUsers()
+      // Handle success
+      let users = result.data;
       commit("SET_USERS", users);
     },
     async setToken({ commit }, token) {
@@ -104,7 +115,6 @@ export default new vuex.Store({
       console.log("selectedUser", selectedUser);
       commit("SET_SELECTED_USER", selectedUser);
     },
-
     async updateUser({ commit }, selectedUser) {
       await axios
         .put(
@@ -121,6 +131,11 @@ export default new vuex.Store({
         }
         )
     },
+
+    async triggerUpdateUser(selectedUser) {
+      api.updateUser(selectedUser)
+    }
+
   },
   mutations: {
     SET_USERS(state, users) {

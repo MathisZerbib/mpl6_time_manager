@@ -1,16 +1,20 @@
 <template>
   <form v-on:submit.prevent="onSubmit">
-    <div class="card my-3 card-3">
+    <div class="card my-3 card-3 card-glass my-3 mx-2">
       <div class="card-header text-center">
-        <h3>Ajoutez un utilisateur</h3>
+        <h3 class="text-white">Ajoutez un utilisateur</h3>
       </div>
       <div class="card-body">
         <div class="form-group">
-          <label class="m-2" for="exampleInputName">Name</label>
-          <input v-model="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter name" />
+          <input v-model="name" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName"
+            placeholder="Enter name" />
 
-          <label class="m-2" for="emailInput">Email address</label>
-          <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
+          <input v-model="email" type="email" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="emailInput"
+            placeholder="Enter email" />
+
+          <input v-model="password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="password_hash"
+            placeholder="Enter password" />
+
 
           <label class="m-2" for="password_hash">Password</label>
           <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
@@ -18,11 +22,11 @@
           <label class="m-2" for="exampleInputName">Team</label>
           <input v-model="team" type="text" class="form-control" id="exampleInputName" placeholder="Enter team name" />
           <div class="input-group my-3 rounded-right">
-            <div class="input-group-prepend form-control">
-              <label class="m-2" for="roleInput">Role</label>
+            <div class="input-group-prepend form-control card-glass text-white">
+              <label class="my-2" for="roleInput">Role</label>
             </div>
 
-            <select v-model="role" class="custom-select">
+            <select v-model="role" class="custom-select card-glass text-white">
               <option disabled value="">Please select a role</option>
               <option value="manager">manager</option>
               <option value="employee">employee</option>
@@ -30,17 +34,20 @@
           </div>
         </div>
       </div>
+      <div class="text-center">
+        <button type="submit" class="btn card-glass m-2 text-white">
+          Submit
+        </button>
+      </div>
 
-      <button type="submit" class="btn btn-primary btn btn-primary my-3 w-50 m-auto ">
-        Submit
-      </button>
     </div>
   </form>
 </template>
 
 <script>
 import axios from "axios";
-import { mapGetters, mapActions } from "vuex";
+import api from "../../services/api";
+
 
 export default {
   name: "FormUser",
@@ -63,7 +70,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       //this.createUser();
-      this.createUser()
+      api.createUser(this.form)
     },
     createUser: async function () {
       await axios
@@ -79,8 +86,7 @@ export default {
             },
           }
         )
-        .then((response) => 
-        { 
+        .then((response) => {
           console.log("works", response)
           this.$store.dispatch("loadUsers");
         })
@@ -102,4 +108,15 @@ export default {
     // },
   },
 };
+
 </script>
+
+
+
+<style>
+
+input::placeholder {
+  color: white;
+ }
+</style>
+

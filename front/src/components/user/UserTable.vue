@@ -1,13 +1,10 @@
 <template>
-  <div v-if="!users">
-    <p>Loading ...</p>
-  </div>
-  <div class="card my-3 card-2">
+  <div class="card my-3 card-2 card-glass">
     <div class="card-header text-center">
-      <h3>Utilisateurs</h3>
+      <h3 class="text-white">Utilisateurs</h3>
     </div>
     <div class="table-responsive">
-      <table class="table ">
+      <table class="table text-white">
         <thead>
           <tr>
             <th>ID</th>
@@ -91,11 +88,6 @@ export default {
     };
   },
 
-  // async updateUser(id) {
-  //   const { data } = await axios.post("https://api/users/" + id);
-  //   console.log(data);
-  // },
-
   methods: {
     async deleteUser(id) {
       await axios.delete(
@@ -108,8 +100,8 @@ export default {
       this.$store.dispatch("setSelectedUser", user);
     },
 
-    async modifyUser(id) {
-      await this.$store.dispatch("updateUser", id)
+    async modifyUser(user) {
+      await this.$store.dispatch("triggerUpdateUser", user)
       const elem = this.$refs.myBtn
             elem.click()
     
