@@ -94,7 +94,7 @@ export default {
       this.$store.dispatch("setSelectedUser", user);
     },
 
-    async modifyUser(id) {
+    async modifyUser(user) {
       await this.$store.dispatch("triggerUpdateUser", user)
       const elem = this.$refs.myBtn
             elem.click()
