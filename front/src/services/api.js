@@ -1,12 +1,11 @@
 import axios from "axios";
 
 
-var api = {
+const api = {
 
 
 
   // GET ALL USERS 
-
   async getAllUsers() {
     let result;
     result = await axios.get(
@@ -23,7 +22,7 @@ var api = {
       email: user.email,
       password_hash: user.password_hash,
       role: "employee",
-      team: "A"
+      team: "Alpha"
     };
     await axios
       .post(
@@ -112,8 +111,6 @@ var api = {
         }
       )
   },
-
-
 }
 
 
