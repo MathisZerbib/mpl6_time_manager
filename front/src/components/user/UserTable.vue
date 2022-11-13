@@ -2,20 +2,19 @@
   <div v-if="!users">
     <p>Loading ...</p>
   </div>
-
-  <div v-else class="d-flex align-items-center my-5 m-auto">
-    <div class="card rounded">
-      <div class="card-header text-center">
-        <h3>Utilisateurs</h3>
-      </div>
-      <table class="table table-bordered table-striped">
+  <div class="card my-3 card-2">
+    <div class="card-header text-center">
+      <h3>Utilisateurs</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table ">
         <thead>
           <tr>
-            <!-- <th v-for="col in columns" v-bind:key="col">{{ col }}</th> -->
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Team</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -25,6 +24,7 @@
             <td>{{ user.username }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>
+            <td>{{ user.team }}</td>
             <td class="d-flex justify-content-center">
               <button class="btn btn-primary m-2" data-bs-target="#myModal" data-bs-toggle="modal"
                 @click="setSelectedUser(user)">
@@ -37,7 +37,7 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -60,10 +60,15 @@
                   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
                     v-model="this.selectedUser.email" />
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputName">Team</label>
+                  <input type="text" class="form-control" id="exampleInputText" placeholder="Enter team"
+                    v-model="this.selectedUser.team" />
+                </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()" ref="myBtn">
                 Close
               </button>
               <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
@@ -74,8 +79,6 @@
         </div>
       </div>
     </div>
-
-  </div>
 </template>
 <script>
 import axios from "axios";
@@ -87,14 +90,6 @@ export default {
       isModalVisible: false,
     };
   },
-  // computed: {
-  //   columns: function columns() {
-  //     if (this.users.length == 0) {
-  //       return [];
-  //     }
-  //     return Object.keys(this.users[0]);
-  //   },
-  // },
 
   // async updateUser(id) {
   //   const { data } = await axios.post("https://api/users/" + id);
@@ -106,6 +101,7 @@ export default {
       await axios.delete(
         "http://" + "127.0.0.1" + ":4000/api/users/" + id
       );
+      this.$store.dispatch("loadUsers");
     },
 
     setSelectedUser(user) {
@@ -113,7 +109,10 @@ export default {
     },
 
     async modifyUser(id) {
-      this.$store.dispatch("updateUser", id);
+      await this.$store.dispatch("updateUser", id)
+      const elem = this.$refs.myBtn
+            elem.click()
+    
     },
 
     resetSelectedUser() {
