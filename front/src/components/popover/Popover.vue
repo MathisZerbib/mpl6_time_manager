@@ -6,16 +6,16 @@
                 <h5>Profile</h5>
                 <div class="justify-content-around flex-column my-3 content-popover">
                     <div>
-                        Username: {{ this.form.username}}
+                        Username: {{ $store.state.loggedUser.username}}
                     </div>
                     <div>
-                        email: {{ this.form.email}}
+                        email: {{ $store.state.loggedUser.email}}
                     </div>
                     <div>
-                        Role: {{ this.form.role}}
+                        Role: {{ $store.state.loggedUser.role}}
                     </div>
                     <div>
-                        Team : {{ this.form.team }}
+                        Team : {{ $store.state.loggedUser.team }}
                     </div>
                 </div>
             </div>
@@ -27,20 +27,11 @@
 import { defineComponent } from "vue";
 import Popper from "vue3-popper";
 
+
 export default defineComponent({
     components: {
         Popper,
     },
-    data() {
-    return {
-      form: {
-        username: "Thomas",
-        email: "thomas@gmail.com",
-        role: "admin",
-        team: "alpha",
-      },
-    };
-  },
 });
 </script>
 

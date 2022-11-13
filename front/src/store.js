@@ -9,12 +9,12 @@ export default new vuex.Store({
     users: [],
     selectedUser: {},
     loggedUser: {
-      id: "",
-      username: "",
-      email: "",
-      team: "",
-      role: "",
-      token: localStorage.getItem('token') || ""
+      id: sessionStorage.getItem('user') || "",
+      username: sessionStorage.getItem('user') || "",
+      email: sessionStorage.getItem('user') || "",
+      team: sessionStorage.getItem('user') || "",
+      role: sessionStorage.getItem('user') || "",
+      token: sessionStorage.getItem('token') || ""
     },
 
   },
@@ -77,22 +77,22 @@ export default new vuex.Store({
               loggedUser.role = element.role;
               loggedUser.token = token;
               commit("SET_LOGGED_USER", loggedUser);
-              localStorage.removeItem('role')
+              sessionStorage.removeItem('role')
 
               switch (loggedUser.role) {
                 case "admin":
-                  localStorage.setItem('role', 'admin')
+                  sessionStorage.setItem('role', 'admin')
                   router.push('admin');
 
                   break;
                 case "manager":
-                  localStorage.setItem('role', 'manager')
+                  sessionStorage.setItem('role', 'manager')
                   router.push('manager-dashboard');
 
                   break;
 
                 case "employee":
-                  localStorage.setItem('role', 'employee')
+                  sessionStorage.setItem('role', 'employee')
                   router.push('dashboard');
 
                   break;

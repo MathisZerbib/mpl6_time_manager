@@ -120,7 +120,7 @@ export default {
     },
     async getWorkingTime() {
       const { data } = await axios.get(
-        "http://" + "127.0.0.1" + ":4000/api/workingtime/" + this.p1
+        "http://" + "127.0.0.1" + ":4000/api/workingtime/" + this.$store.state.loggedUser.id
       );
       for (let i = 0; i < data.data.length; i++) {
         data.data[i].start = data.data[i].start.substring(11, 16);

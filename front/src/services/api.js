@@ -80,7 +80,7 @@ const api = {
         setTimeout(() => {
           console.log(response);
           console.log("user has been loged", response.data, "status", response.status);
-          localStorage.setItem(`token`, response.data.jwt);
+          sessionStorage.setItem(`token`, response.data.jwt);
           store.dispatch("setToken", response.data.jwt);
         }, 500);
       })
