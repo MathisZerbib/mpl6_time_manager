@@ -1,6 +1,6 @@
 <template>
   <form v-on:submit.prevent="onSubmit">
-    <div class="card my-3 card-2">
+    <div class="card my-3 card-3">
       <div class="card-header text-center">
         <h3>Ajoutez un utilisateur</h3>
       </div>
@@ -14,7 +14,9 @@
 
           <label class="m-2" for="password_hash">Password</label>
           <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
-          
+
+          <label class="m-2" for="exampleInputName">Team</label>
+          <input v-model="team" type="text" class="form-control" id="exampleInputName" placeholder="Enter team name" />
           <div class="input-group my-3 rounded-right">
             <div class="input-group-prepend form-control">
               <label class="m-2" for="roleInput">Role</label>
@@ -48,7 +50,8 @@ export default {
         email: "",
         name: "",
         password_hash: "",
-        role: ""
+        role: "",
+        team:""
       },
     };
   },
@@ -71,7 +74,8 @@ export default {
               username: this.name,
               password_hash: this.password_hash,
               email: this.email,
-              role: this.role
+              role: this.role,
+              team: this.team
             },
           }
         )
