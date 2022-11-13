@@ -1,5 +1,5 @@
 <template>
-  <div class="card my-3 card-2 card-glass">
+  <div class="card my-3 card-3 card-glass">
     <div class="card-header text-center">
       <h3 class="text-white">Utilisateurs</h3>
     </div>

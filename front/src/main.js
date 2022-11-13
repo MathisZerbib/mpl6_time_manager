@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-import { BIconPencilSquare, BIconTrash } from "bootstrap-icons-vue";
+import { BIconPencilSquare, BIconTrash, BIconPersonCircle } from "bootstrap-icons-vue";
 
 import store from "./store";
 
@@ -23,6 +23,8 @@ import '@vuepic/vue-datepicker/dist/main.css'
 const app = createApp(App);
 
 app.component("BIconPencilSquare", BIconPencilSquare);
+app.component("BIconPersonCircle", BIconPersonCircle);
+
 app.component("BIconTrash", BIconTrash);
 app.component("Datepicker", Datepicker);
 
