@@ -60,7 +60,8 @@ const timeEnd = ref({
   minutes: new Date().getMinutes()
 });
 async function createWokingTime() {
-  api.addWokingTime(current_date, timeStart.value, timeEnd.value, user.id);
+  let id = user.id == null ? this.$store.state.loggedUser.id : user.id
+  api.addWokingTime(current_date, timeStart.value, timeEnd.value, id);
 }
 </script>
 
