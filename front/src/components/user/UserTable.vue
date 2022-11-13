@@ -1,7 +1,4 @@
 <template>
-  <div v-if="!users">
-    <p>Loading ...</p>
-  </div>
   <div class="card my-3 card-2 card-glass">
     <div class="card-header text-center">
       <h3 class="text-white">Utilisateurs</h3>
@@ -98,7 +95,7 @@ export default {
     },
 
     async modifyUser(id) {
-      await this.$store.dispatch("updateUser", id)
+      await this.$store.dispatch("triggerUpdateUser", user)
       const elem = this.$refs.myBtn
             elem.click()
     

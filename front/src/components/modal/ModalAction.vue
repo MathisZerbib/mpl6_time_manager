@@ -30,24 +30,16 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+
 export default {
   name: "UserTable",
   data() {
     return {
       isModalVisible: false,
-      users: [],
     };
   },
   methods: {
-    async updateUser(id) {
-      const { data } = await axios.post("http://"+ "127.0.0.1"+"/api/users/" + id);
-      console.log(data);
-    },
-    async deleteUser(id) {
-      const { data } = await axios.delete("http://"+ "127.0.0.1"+"/api/users/" + id);
-      console.log(data);
-    },
+
     showModal() {
        this.isModalVisible = true;
      },

@@ -36,7 +36,7 @@
 <script setup>
 // Lazy load the component we want to pass
 import { ref, reactive } from 'vue';
-import axios from 'axios';
+import api from "../../services/api";
 
 
 var date = new Date();
@@ -60,19 +60,7 @@ const timeEnd = ref({
   minutes: new Date().getMinutes()
 });
 async function createWokingTime() {
-  await axios
-    .post(
-      "http://" +
-
-      "127.0.0.1" +
-      ":4000/api/workingtime/" + user.id,
-      {
-        "time": {
-          start: current_date + "T" + timeStart.value.hours + ":" + timeStart.value.minutes + ":00",
-          end: current_date + "T" + timeEnd.value.hours + ":" + timeEnd.value.minutes + ":00",
-        },
-      }
-    )
+  api.addWokingTime(current_date, timeStart.value, timeEnd.value);
 }
 </script>
 

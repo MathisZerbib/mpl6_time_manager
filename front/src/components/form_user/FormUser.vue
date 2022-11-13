@@ -40,7 +40,8 @@
 
 <script>
 import axios from "axios";
-import { mapGetters, mapActions } from "vuex";
+import api from "../../services/api";
+
 
 export default {
   name: "FormUser",
@@ -62,7 +63,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       //this.createUser();
-      this.createUser()
+      api.createUser(this.form)
     },
     createUser: async function () {
       await axios

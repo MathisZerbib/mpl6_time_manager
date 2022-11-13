@@ -1,16 +1,17 @@
 import vuex from "vuex";
 import axios from "axios";
+import api from "./services/api";
 
 export default new vuex.Store({
   state: {
     users: [],
     selectedUser: {},
-    loggedUser : {
+    loggedUser: {
       id: null,
       username: null,
       email: null,
       token: null,
-     }
+    }
 
   },
   getters: {
@@ -23,13 +24,13 @@ export default new vuex.Store({
   actions: {
 
     async getLoggedUserInfo({ commit }, token) {
-      let user ;
+      let user;
       let result;
       try {
         result = await axios.post(
           "http://" + "127.0.0.1" + ":4000/api/auth/", {
-            token: token
-          }
+          token: token
+        }
         );
       } catch (error) {
         // Handle error
@@ -42,19 +43,9 @@ export default new vuex.Store({
 
     },
     async loadUsers({ commit }) {
-      let users = [];
-      let result;
-      try {
-        result = await axios.get(
-          "http://" + "127.0.0.1" + ":4000/api/users"
-        );
-      } catch (error) {
-        // Handle error
-        return error;
-      }
-
+        let result = api.getAllUsers()
       // Handle success
-      users = result.data.data;
+      let users = result.data;
       commit("SET_USERS", users);
     },
 
@@ -63,7 +54,7 @@ export default new vuex.Store({
       commit("SET_SELECTED_USER", selectedUser);
     },
 
-    async parseJWT({ commit }, token){
+    async parseJWT({ commit }, token) {
       try {
         return JSON.parse(atob(token.split('.')[1]));
       } catch (e) {
@@ -71,23 +62,10 @@ export default new vuex.Store({
       }
     },
 
-    async updateUser({ commit }, selectedUser) {
-      console.log();
-        await axios
-          .put(
-            "http://" +
-              "127.0.0.1" +
-              ":4000/api/users/" +
-              selectedUser.id,
-            {
-              user: selectedUser,
-            }
-          )
-          .then((data) => {
-              console.log("Success Update", data.data);
-        }
-      )
-    },
+    async triggerUpdateUser(selectedUser) {
+      api.updateUser(selectedUser)
+    }
+
   },
   mutations: {
     SET_USERS(state, users) {
@@ -95,7 +73,7 @@ export default new vuex.Store({
     },
     SET_SELECTED_USER(state, selectedUser) {
       state.selectedUser = selectedUser;
-      sessionStorage.user= JSON.stringify(selectedUser);
+      sessionStorage.user = JSON.stringify(selectedUser);
 
     },
 
