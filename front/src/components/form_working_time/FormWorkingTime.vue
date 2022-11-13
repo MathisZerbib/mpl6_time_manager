@@ -60,7 +60,7 @@ const timeEnd = ref({
   minutes: new Date().getMinutes()
 });
 async function createWokingTime() {
-  api.addWokingTime(current_date, timeStart.value, timeEnd.value);
+  api.addWokingTime(current_date, timeStart.value, timeEnd.value, user.id);
 }
 </script>
 

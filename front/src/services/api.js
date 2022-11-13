@@ -94,7 +94,7 @@ const api = {
 
 
   // POST NEW WORKING TIME FOR USER
-  async addWokingTime(current_date, timeStart, timeEnd) {
+  async addWokingTime(current_date, timeStart, timeEnd, id) {
     let reqBody = {
       start: current_date + "T" + timeStart.hours + ":" + timeStart.minutes + ":00",
       end: current_date + "T" + timeEnd.hours + ":" + timeEnd.minutes + ":00",
@@ -104,7 +104,7 @@ const api = {
         "http://" +
 
         "127.0.0.1" +
-        ":4000/api/workingtime/" + this.$store.user.id,
+        ":4000/api/workingtime/" + id,
         {
           time: reqBody
 
