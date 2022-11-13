@@ -30,6 +30,7 @@ export default new vuex.Store({
       commit("SET_USERS", users);
     },
 
+    
     async setSelectedUser({ commit }, selectedUser) {
       console.log("selectedUser", selectedUser);
       commit("SET_SELECTED_USER", selectedUser);
@@ -59,8 +60,6 @@ export default new vuex.Store({
     },
     SET_SELECTED_USER(state, selectedUser) {
       state.selectedUser = selectedUser;
-      sessionStorage.user= JSON.stringify(selectedUser);
-
     },
 
   },
