@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-around my-3">
-    <div class="card">
-      <h5 class="text-center my-3">Badgeage</h5>
+    <div class="px-3">
+      <h5 class="text-center my-3 text-white">Badgeage</h5>
       <div>
         <div class="custom-counter"
           v-if="data.startTime !== 0 && data.isCompleted == false || data.startTime == 0 && data.isCompleted == false">
@@ -16,11 +16,11 @@
         </div>
 
         <Doughnut id="dougnhut" :chart-options="chart.chartOptions" :chart-data="chart.chartData"
-          :option="chart.options" :width="300" :height="300" />
+          :option="chart.options" :width="250" :height="250" />
       </div>
       <div class="d-flex align-items-center justify-content-around my-3">
-        <button type="button" class="btn btn-success" @click="runTimer()">Entrée</button>
-        <button type="button" class="btn btn-warning" @click="pauseTimer()">Pause</button>
+        <button type="button" class="btn card-glass text-white" @click="runTimer">Entrée</button>
+        <button type="button" class="btn  card-glass text-white" @click="stopTimer">Pause</button>
       </div>
     </div>
   </div>
@@ -52,14 +52,15 @@ const chart = reactive({
     labels: ["Temps travaillé", "Temps restant"],
     datasets: [
       {
+        borderColor: "transparent", 
         backgroundColor: ["#198755", "#D33F49"],
         data: [data.startTime, data.totalTime],
       },
     ],
   },
   chartOptions: {
-    responsive: false,
-    maintainAspectRatio: false,
+
+    responsive: true,
     cutout: 100,
     plugins: {
       legend: {
@@ -95,14 +96,15 @@ function generateData() {
     ]
   };
   chart.chartOptions = {
-    responsive: false,
-    maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: true,
     cutout: 100,
     plugins: {
       legend: {
         display: false,
       },
     },
+
   };
 }
 function runTimer() {

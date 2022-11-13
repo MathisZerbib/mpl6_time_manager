@@ -1,12 +1,12 @@
 <template>
-  <div v-if="!workingtimes" class="">
+  <div v-if="!workingtimes" class="card-glass">
     <div class="card">
 
       <div class="card-header text-center ">
         <h3>Loading...</h3>
       </div>
     </div>
-    <table class="">
+    <table class="text-white">
       <thead>
         <tr>
           <th>ID</th>
@@ -17,17 +17,17 @@
       </thead>
     </table>
   </div>
-  <div class="card-2">
+  <div class="card-2 card-glass">
     <div class="card-header text-center">
-      <h3>Heures de travail</h3>
+      <h3 class="text-white">Heures de travail</h3>
     </div>
     <div class="d-flex my-3">
-      <input v-model="this.p1" type="number" class="w-100 rounded form-control-1 shadow mx-2" id="inputUserId"
+      <input v-model="this.p1" type="number" class="card-glass w-100 rounded form-control-1 shadow mx-2 text-white" id="inputUserId"
         placeholder="Enter a user Id" required />
-      <button class="btn btn-primary btn btn-primary" @click="this.refreshWorkingTime()"> refresh</button>
+      <button class="btn card-glass text-white" @click="this.refreshWorkingTime()"> refresh</button>
     </div>
     <div class="table-responsive">
-      <table class="table">
+      <table class="table text-white">
 
         <thead>
           <tr>
@@ -147,3 +147,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.dp__input_wrap > input, .dp__input_wrap > svg {
+  background-color: transparent;
+  color: white;
+}
+</style>

@@ -1,14 +1,14 @@
 <template>
       <div class="d-flex justify-content-around my-3">
 
-  <div class="card">
-    <h5 class="text-center my-3">Recap & Offset</h5>
+  <div class="px-3">
+    <h5 class="text-center my-3 text-white">Recap & Offset</h5>
     <div>
       <Doughnut
         :chart-options="chartOptions"
         :chart-data="chartData"
-        :width="300"
-        :height="300"
+        :width="250"
+        :height="250"
       />
     </div>
   </div>
@@ -39,14 +39,14 @@ export default {
         labels: ["Temps travaillé", "Temps restant"],
         datasets: [
           {
+            borderColor: "transparent", 
             backgroundColor: ["#198755", "#D33F49"],
             data: [20, 40],
           },
         ],
       },
       chartOptions: {
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
         cutout: 0,
         plugins: {
           legend: {
