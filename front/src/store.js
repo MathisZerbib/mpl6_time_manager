@@ -9,11 +9,11 @@ export default new vuex.Store({
     users: [],
     selectedUser: {},
     loggedUser: {
-      id: sessionStorage.getItem('user') || "",
-      username: sessionStorage.getItem('user') || "",
-      email: sessionStorage.getItem('user') || "",
-      team: sessionStorage.getItem('user') || "",
-      role: sessionStorage.getItem('user') || "",
+      id: sessionStorage.getItem('id') || "",
+      username: sessionStorage.getItem('username') || "",
+      email: sessionStorage.getItem('email') || "",
+      team: sessionStorage.getItem('team') || "",
+      role: sessionStorage.getItem('role') || "",
       token: sessionStorage.getItem('token') || ""
     },
 
@@ -70,12 +70,24 @@ export default new vuex.Store({
             if (element.id == id) {
               let loggedUser = {};
               console.log('MATCH', element)
+              sessionStorage.removeItem('id')
+              sessionStorage.removeItem('username')
+              sessionStorage.removeItem('email')
+              sessionStorage.removeItem('team')
+
+
               loggedUser.id = element.id;
               loggedUser.username = element.username;
               loggedUser.email = element.email;
               loggedUser.team = element.team;
               loggedUser.role = element.role;
               loggedUser.token = token;
+
+              sessionStorage.setItem('id', element.id)
+              sessionStorage.setItem('username',element.username )
+              sessionStorage.setItem('email', element.email)
+              sessionStorage.setItem('team', element.team)
+
               commit("SET_LOGGED_USER", loggedUser);
               sessionStorage.removeItem('role')
 
