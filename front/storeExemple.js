@@ -24,9 +24,6 @@ export default new vuex.Store({
     SET_USERS(state, user) {
       state.user = user;
       state.token = user.token;
-      localStorage.user= user;
-      localStorage.token = token;
-      
     },
   },
 });

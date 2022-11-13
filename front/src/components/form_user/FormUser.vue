@@ -1,6 +1,6 @@
 <template>
-  <form class="" v-on:submit.prevent="onSubmit">
-    <div class="card rounded shadow">
+  <form v-on:submit.prevent="onSubmit">
+    <div class="card my-3 card-3">
       <div class="card-header text-center">
         <h3>Ajoutez un utilisateur</h3>
       </div>
@@ -8,24 +8,26 @@
         <div class="form-group">
           <label class="m-2" for="exampleInputName">Name</label>
           <input v-model="name" type="text" class="form-control" id="exampleInputName" placeholder="Enter name" />
-          <label class="m-2" for="password_hash">Password</label>
-          <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
 
           <label class="m-2" for="emailInput">Email address</label>
           <input v-model="email" type="email" class="form-control" id="emailInput" placeholder="Enter email" />
+
+          <label class="m-2" for="password_hash">Password</label>
+          <input v-model="password_hash" type="text" class="form-control" id="password_hash" placeholder="Enter password" />
+
+          <label class="m-2" for="exampleInputName">Team</label>
+          <input v-model="team" type="text" class="form-control" id="exampleInputName" placeholder="Enter team name" />
           <div class="input-group my-3 rounded-right">
-  <div class="input-group-prepend form-control">
-          <label class="m-2" for="roleInput">Role</label>
+            <div class="input-group-prepend form-control">
+              <label class="m-2" for="roleInput">Role</label>
+            </div>
+
+            <select v-model="role" class="custom-select">
+              <option disabled value="">Please select a role</option>
+              <option value="manager">manager</option>
+              <option value="employee">employee</option>
+            </select>
           </div>
-
-          <select v-model="role" class="custom-select">
-            <option disabled value="">Please select a role</option>
-            <option value="manager">Manager</option>
-            <option value="employee">Employee</option>
-          </select>
-</div>
-
-
         </div>
       </div>
 
@@ -38,6 +40,7 @@
 
 <script>
 import axios from "axios";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "FormUser",
@@ -47,13 +50,20 @@ export default {
         email: "",
         name: "",
         password_hash: "",
-        role: ""
+        role: "",
+        team:""
       },
     };
   },
+
+  async mounted() {
+  },
+
   methods: {
-    onSubmit() {
-      this.createUser();
+    onSubmit(e) {
+      e.preventDefault();
+      //this.createUser();
+      this.createUser()
     },
     createUser: async function () {
       await axios
@@ -64,11 +74,16 @@ export default {
               username: this.name,
               password_hash: this.password_hash,
               email: this.email,
-              role: this.role
+              role: this.role,
+              team: this.team
             },
           }
         )
-        .then((response) => console.log("works", response))
+        .then((response) => 
+        { 
+          console.log("works", response)
+          this.$store.dispatch("loadUsers");
+        })
         .catch(function (error) {
           // error
           console.log(error);
