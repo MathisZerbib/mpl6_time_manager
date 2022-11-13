@@ -48,36 +48,6 @@
       onSubmit() {
         api.registerUser(this.user);
       },
-      // registerUser: async function () {
-      //   await axios
-      //     .post(
-      //       "http://" + "127.0.0.1" + ":4000/api/users",
-      //       {
-      //         user: {
-      //           username: this.name,
-      //           email: this.email,
-      //           password_hash: this.password_hash,
-      //           role: "employee",
-      //         },
-      //       }
-      //     )
-      //     .then((response) => console.log("user has been registrated", response.data, "status", response.status))
-      //     .catch(function (error) {
-      //       // error
-      //       console.log(error);
-      //     });
-      // },
-      // onReset(event) {
-      //   event.preventDefault();
-      //   // Reset our form values
-      //   this.form.email = "";
-      //   this.form.name = "";
-      //   // Trick to reset/clear native browser form validation state
-      //   this.show = false;
-      //   this.$nextTick(() => {
-      //     this.show = true;
-      //   });
-      // },
     },
   };
   </script>
