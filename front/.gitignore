@@ -30,5 +30,3 @@ coverage
 .DS_Store
 api/.DS_Store
 api/priv/.DS_Store
-.node_modules
-package-lock.json
