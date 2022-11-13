@@ -7,9 +7,8 @@ const api = {
 
   // GET ALL USERS 
   async getAllUsers() {
-    let result;
-    result = await axios.get(
-      "http://" + "127.0.0.1" + ":4000/api/users"
+    let result = await axios.get(
+      "http://127.0.0.1:4000/api/users"
     );
     return result
   },

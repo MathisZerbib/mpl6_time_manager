@@ -46,9 +46,10 @@ export default new vuex.Store({
 
     },
     async loadUsers({ commit }) {
-        let result = api.getAllUsers()
+        let result = await api.getAllUsers()
       // Handle success
-      let users = result.data;
+      let users = result.data.data;
+      console.log("users", users)
       commit("SET_USERS", users);
     },
     async setToken({ commit }, token) {

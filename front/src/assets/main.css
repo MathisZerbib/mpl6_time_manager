@@ -121,3 +121,7 @@ body {
 	cursor: pointer;
 }
 
+.modal-backdrop {
+	opacity: 0.1!important;
+	z-index: -1!important;
+}
