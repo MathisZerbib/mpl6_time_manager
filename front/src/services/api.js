@@ -79,9 +79,11 @@ const api = {
       )
       .then((response) => {
         setTimeout(() => {
-          console.log("user has been loged", response.data, "status", response.status)
-          this.$router.push('dashboard')
-        }, 1000);
+          console.log(response);
+          console.log("user has been loged", response.data, "status", response.status);
+          localStorage.setItem(`token`, response.data.jwt);
+          this.$store.dispatch("setToken", response.data.jwt);
+        }, 500);
       })
       .catch(function (error) {
         // error
