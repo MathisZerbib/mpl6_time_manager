@@ -46,8 +46,10 @@ const api = {
       username: user.name,
       email: user.email,
       password_hash: user.password_hash,
+      team: user.team,
       role: user.role,
     };
+
     await axios
       .post(
         "http://" + "127.0.0.1" + ":4000/api/users",
@@ -57,18 +59,12 @@ const api = {
         }
       )
       .then(() => {
-        this.$store.dispatch("loadUsers");
+        store.dispatch("loadUsers");
       })
       .catch((error) => {
         // error
         console.log(error);
       })
-  },
-
-
-  // POST UPDATE USER
-  async updateUser(userSelected) {
-    api.updateUser(userSelected)
   },
 
 
@@ -119,6 +115,28 @@ const api = {
         }
       )
   },
+
+
+
+  // UPDATE NEW WORKING TIME FOR USER
+  async editWorkingTime(current_date, start, end, idWt) {
+
+    await axios
+      .put(
+        "http://" +
+
+        "127.0.0.1" +
+        ":4000/api/workingtime/" + idWt,
+        {
+          time: {
+            start: current_date + "T" + start+":00",
+            end: current_date + "T" + end+":00",
+          }
+
+        }
+      )
+  },
+
 }
 
 

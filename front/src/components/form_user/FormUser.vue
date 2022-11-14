@@ -6,22 +6,23 @@
       </div>
       <div>
         <div class="form-group">
-          <input v-model="name" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName"
+          <input v-model="form.name" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName"
             placeholder="Enter name" />
 
-          <input v-model="email" type="email" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="emailInput"
+          <input v-model="form.email" type="email" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="emailInput"
             placeholder="Enter email" />
 
-          <input v-model="password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="password_hash"
+          <input v-model="form.password_hash" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="password_hash"
             placeholder="Enter password" />
-          <input v-model="team" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName" placeholder="Enter team name" />
+            
+          <input v-model="form.team" type="text" class="card-glass w-100 rounded form-control-1 shadow my-2 text-white" id="exampleInputName" placeholder="Enter team name" />
          
           <div class="input-group my-3 rounded-right">
             <div class="input-group-prepend form-control card-glass text-white">
               <label class="my-2" for="roleInput">Role</label>
             </div>
 
-            <select v-model="role" class="custom-select card-glass text-white">
+            <select v-model="form.role" class="custom-select card-glass text-white">
               <option disabled value="">Please select a role</option>
               <option value="manager">manager</option>
               <option value="employee">employee</option>
@@ -40,7 +41,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import api from "../../services/api";
 
 
@@ -66,29 +66,6 @@ export default {
       e.preventDefault();
       //this.createUser();
       api.createUser(this.form)
-    },
-    createUser: async function () {
-      await axios
-        .post(
-          "http://" + "127.0.0.1" + ":4000/api/users",
-          {
-            user: {
-              username: this.name,
-              password_hash: this.password_hash,
-              email: this.email,
-              role: this.role,
-              team: this.team
-            },
-          }
-        )
-        .then((response) => {
-          console.log("works", response)
-          this.$store.dispatch("loadUsers");
-        })
-        .catch(function (error) {
-          // error
-          console.log(error);
-        });
     },
     // onReset(event) {
     //   event.preventDefault();

@@ -50,17 +50,17 @@
                 <div class="form-group">
                   <label for="exampleInputName">Name</label>
                   <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name"
-                    v-model="this.selectedUser.username" />
+                    v-model="selectedUser.username" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-                    v-model="this.selectedUser.email" />
+                    v-model="selectedUser.email" />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputName">Team</label>
                   <input type="text" class="form-control" id="exampleInputText" placeholder="Enter team"
-                    v-model="this.selectedUser.team" />
+                    v-model="selectedUser.team" />
                 </div>
               </form>
             </div>
@@ -68,7 +68,7 @@
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="resetSelectedUser()" ref="myBtn">
                 Close
               </button>
-              <button type="button" class="btn btn-primary" @click="modifyUser(this.selectedUser)">
+              <button type="button" class="btn btn-primary" @click="modifyUser(selectedUser)">
                 Save changes
               </button>
             </div>
@@ -101,7 +101,7 @@ export default {
     },
 
     async modifyUser(user) {
-      await this.$store.dispatch("triggerUpdateUser", user)
+      await this.$store.dispatch("updateUser", user)
       const elem = this.$refs.myBtn
             elem.click()
     

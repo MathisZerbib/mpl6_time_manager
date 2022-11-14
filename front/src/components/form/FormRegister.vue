@@ -45,7 +45,8 @@
       };
     },
     methods: {
-      onSubmit() {
+      onSubmit(e) {
+        e.preventDefault();
         api.registerUser(this.user);
       },
     },

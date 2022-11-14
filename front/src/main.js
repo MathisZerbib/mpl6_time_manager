@@ -26,6 +26,7 @@ app.component("BIconPencilSquare", BIconPencilSquare);
 app.component("BIconPersonCircle", BIconPersonCircle);
 
 app.component("BIconTrash", BIconTrash);
+app.component("BIconPersonCircle", BIconPersonCircle);
 app.component("Datepicker", Datepicker);
 
 app.use(vuex, axios);
