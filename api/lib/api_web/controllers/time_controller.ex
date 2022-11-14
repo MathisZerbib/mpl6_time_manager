@@ -4,7 +4,7 @@ defmodule ApiWeb.TimeController do
   alias Api.Working
   alias Api.Working.Time
 
-  action_fallback ApiWeb.FallbackCotroller
+  action_fallback ApiWeb.FallbackController
 
   def index(conn, _params) do
     workingtime = Working.list_workingtime()

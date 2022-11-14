@@ -46,7 +46,7 @@ export default new vuex.Store({
 
     },
     async loadUsers({ commit }) {
-        let result = await api.getAllUsers()
+      let result = await api.getAllUsers()
       // Handle success
       let users = result.data.data;
       console.log("users", users)
@@ -85,7 +85,7 @@ export default new vuex.Store({
               loggedUser.token = token;
 
               sessionStorage.setItem('id', element.id)
-              sessionStorage.setItem('username',element.username )
+              sessionStorage.setItem('username', element.username)
               sessionStorage.setItem('email', element.email)
               sessionStorage.setItem('team', element.team)
 
@@ -128,6 +128,7 @@ export default new vuex.Store({
       console.log("selectedUser", selectedUser);
       commit("SET_SELECTED_USER", selectedUser);
     },
+
     async updateUser({ commit }, selectedUser) {
       await axios
         .put(
@@ -144,11 +145,6 @@ export default new vuex.Store({
         }
         )
     },
-
-    async triggerUpdateUser(selectedUser) {
-      api.updateUser(selectedUser)
-    }
-
   },
   mutations: {
     SET_USERS(state, users) {

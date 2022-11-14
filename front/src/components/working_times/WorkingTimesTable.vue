@@ -22,8 +22,8 @@
       <h3 class="text-white">Heures de travail</h3>
     </div>
     <div class="d-flex my-3">
-      <input v-model="this.p1" type="number" class="card-glass w-100 rounded form-control-1 shadow mx-2 text-white" id="inputUserId"
-        placeholder="Enter a user Id" required />
+      <input v-model="this.p1" type="number" class="card-glass w-100 rounded form-control-1 shadow mx-2 text-white"
+        id="inputUserId" placeholder="Enter a user Id" required />
       <button class="btn card-glass text-white" @click="this.refreshWorkingTime()"> refresh</button>
     </div>
     <div class="table-responsive">
@@ -45,10 +45,11 @@
             <td>{{ workingtime.start }}</td>
             <td>{{ workingtime.end }}</td>
             <td class="d-flex justify-content-center">
-              <button class="btn btn-primary m-2" data-bs-target="#modalWorkingTime" data-bs-toggle="modal">
+              <button class="btn btn-primary m-2" data-bs-target="#modalWorkingTime" data-bs-toggle="modal"
+                @click="selectWorkingTime(workingtime.id)">
                 <BIconPencilSquare />
               </button>
-              <button class="btn btn-danger m-2" @click="deleteWorkingTime(workingtime.id)">
+              <button class="btn btn-danger m-2" @click="deleteWorkingTime(this.workingtime.id)">
                 <BIconTrash />
               </button>
             </td>
@@ -57,7 +58,7 @@
       </table>
     </div>
 
-    <div class="modal" id="modalWorkingTime">
+    <div class="modal fade" id="modalWorkingTime">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -66,7 +67,7 @@
           </div>
           <div class="modal-body">
             <p>Modal body text goes here.</p>
-            <form class="d-flex flex-row justify-content-around align-items-center" v-on:submit.prevent="onSubmit">
+            <form class="d-flex flex-row justify-content-around align-items-center">
               <div class="form-group">
                 <label for="inputStartTime">Start Time</label>
                 <input v-model="startTime" type="time" class="w-100" id="inputStartTime"
@@ -79,10 +80,11 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref="closeBtn">
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" @click="modifyWorkingTime(this.workingTimeId)">Save
+              changes</button>
           </div>
         </div>
       </div>
@@ -91,12 +93,26 @@
 </template>
 <script>
 import axios from "axios";
+import api from "../../services/api";
+
+var date = new Date();
+var current_date =
+  date.getFullYear() +
+  "-" +
+  ("0" + (date.getMonth() + 1)).slice(-2) +
+  "-" +
+  ("0" + (date.getDay() + 1)).slice(-2)
+
+
 export default {
   name: "WorkingTimesTable",
   data() {
     return {
       workingtimes: [],
       userId: null,
+      workingTimeId: null,
+      startTime: null,
+      endTime: null,
     };
   },
 
@@ -111,6 +127,23 @@ export default {
     },
   },
   methods: {
+
+    selectWorkingTime(id) {
+      this.workingTimeId = id;
+    },
+
+    modifyWorkingTime(wtId) {
+      console.log('test', this.workingtimes[0], current_date, this.startTime, this.endTime, wtId)
+      api.editWorkingTime(current_date, this.startTime, this.endTime, wtId);
+      const elem = this.$refs.closeBtn
+      elem.click()
+
+      setTimeout(() => {
+        this.workingtimes = []
+        this.getWorkingTime()
+      }, 1000);
+    },
+
     async deleteWorkingTime(id) {
       await axios.delete(
         "http://" + "127.0.0.1" +
@@ -147,10 +180,12 @@ export default {
 
   },
 };
+
 </script>
 
 <style>
-.dp__input_wrap > input, .dp__input_wrap > svg {
+.dp__input_wrap>input,
+.dp__input_wrap>svg {
   background-color: transparent;
   color: white;
 }
