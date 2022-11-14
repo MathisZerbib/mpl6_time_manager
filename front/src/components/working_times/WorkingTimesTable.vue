@@ -17,7 +17,7 @@
       </thead>
     </table>
   </div>
-  <div class="card-2 card-glass">
+  <div class="card my-3 card-3 card-glass">
     <div class="card-header text-center">
       <h3 class="text-white">Heures de travail</h3>
     </div>
