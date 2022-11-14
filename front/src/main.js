@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-import { BIconPencilSquare, BIconTrash } from "bootstrap-icons-vue";
+import { BIconPencilSquare, BIconTrash, BIconPersonCircle } from "bootstrap-icons-vue";
 
 import store from "./store";
 
@@ -24,6 +24,7 @@ const app = createApp(App);
 
 app.component("BIconPencilSquare", BIconPencilSquare);
 app.component("BIconTrash", BIconTrash);
+app.component("BIconPersonCircle", BIconPersonCircle);
 app.component("Datepicker", Datepicker);
 
 app.use(vuex, axios);
